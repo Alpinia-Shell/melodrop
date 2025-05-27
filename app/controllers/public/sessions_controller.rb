@@ -5,6 +5,10 @@ class Public::SessionsController < Devise::SessionsController
     posts_path
   end
 
+  def after_sign_out_path_for(resource)
+    root_path
+  end
+
   def guest_sign_in
   user = User.guest_sign_in
   sign_in user

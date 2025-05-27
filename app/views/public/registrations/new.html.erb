@@ -1,6 +1,6 @@
 <h3>登録して始めよう</h3>
-<%= form_with model: @user, url: new_user_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: resource %>
+<%= form_with model: @user, url: user_registration_path do |f| %>
+  <%= render "public/shared/error_messages", resource: @user %>
 
   <div class="field">
     <%= f.label :name, "ユーザーネーム" %><br />

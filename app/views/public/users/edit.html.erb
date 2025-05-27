@@ -1,23 +1,18 @@
-<h2>ユーザー編集画面</h2>
+<h2>どうする？</h2>
   <%= form_with model: @user do |f| %>
     <div class="field">
-      <%= f.label :name , ":ユーザーネーム" %><br />
+      <%= f.label :name , ":あなたの名前" %><br />
       <%= f.text_field :name, autofocus: true %>
     </div>
 
     <div class="field">
-      <%= f.label :profile_image , ":プロフィール画像" %><br />
+      <%= f.label :profile_image , ":あなたの写真" %><br />
       <%= f.file_field :profile_image, accept: 'image/*' %>
     </div>
 
     <div class="field">
-      <%= f.label :name , ":ユーザーネーム" %><br />
-      <%= f.text_field :name, autofocus: true %>
-    </div>
-
-    <div class="field">
-      <%= f.label :introduction , ":自己紹介" %><br />
-      <%= f.text_field :name, autofocus: true %>
+      <%= f.label :introduction , ":あなたの紹介" %><br />
+      <%= f.text_field :introduction, autofocus: true %>
     </div>
     <%= f.submit "保存する" %>
   <% end %>

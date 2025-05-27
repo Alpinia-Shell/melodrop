@@ -1,4 +1,4 @@
-<h2>ユーザー編集画面<h2>
+<h2>ユーザー編集画面</h2>
   <%= form_with model: @user do |f| %>
     <div class="field">
       <%= f.label :name , ":ユーザーネーム" %><br />
@@ -11,7 +11,16 @@
     </div>
 
     <div class="field">
-      <%= f.label :body , ":ユーザーネーム" %><br />
+      <%= f.label :name , ":ユーザーネーム" %><br />
       <%= f.text_field :name, autofocus: true %>
     </div>
+
+    <div class="field">
+      <%= f.label :introduction , ":自己紹介" %><br />
+      <%= f.text_field :name, autofocus: true %>
+    </div>
+    <%= f.submit "保存する" %>
   <% end %>
+
+  <%= link_to "戻る", posts_path %>
+  <%= link_to "退会する", users_destroy_confirm_path %>

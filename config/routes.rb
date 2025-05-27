@@ -18,7 +18,12 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
+  devise_scope :user do
+    post "public/guest_sign_in", to: "public/sessions#guest_sign_in"
+  end
+
   scope module: :public do
+    root to: 'homes#top'
     get '/mypage' => 'users#mypage'
     get '/users/destroy_confirm' => 'users#destroy_confirm'
     resources :users, only:[:edit, :show, :update, :destroy] do

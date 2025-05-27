@@ -5,4 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
+
+  GUEST_USER_EMAIL = "guest@example.com"
+
+  def self.guest_sign_in
+    find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
+      user.password = SecureRandom.urlsafe_base64
+      user.name = "guestuser"
+    end
+  end
 end

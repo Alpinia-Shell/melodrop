@@ -25,7 +25,7 @@ class Public::UsersController < ApplicationController
     if current_user.update(is_active: false)
       reset_session
       flash[:notice] = "退会が完了しました"
-      redirect_to root_path
+      redirect_to new_user_registration_path
     else 
       flash[:alert] = "退会処理に失敗しました"
       render :edit

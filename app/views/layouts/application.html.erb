@@ -15,6 +15,9 @@
     <%= render 'layouts/header' %>
     <div class = "container">
       <main class="mb-auto">
+        <% flash.each do |message_type, message| %>
+          <% message_type %><%= message %>
+        <% end %>
         <%= yield %>
       </main>
     </div>

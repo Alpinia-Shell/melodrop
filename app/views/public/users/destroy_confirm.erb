@@ -1,0 +1,5 @@
+<p>退会後は、一切の情報を戻すことはできません。<br/>
+それでも退会しますか？</p>
+
+<%= link_to "戻る", edit_user_path(@user) %>
+<%= link_to "退会する" , user_path(@user), method: :delete %>

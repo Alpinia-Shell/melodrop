@@ -17,6 +17,21 @@ class Public::UsersController < ApplicationController
     end   
   end
 
+  def destroy_confirm
+    @user = current_user
+  end
+
+  def destroy
+    if current_user.update(is_active: false)
+      reset_session
+      flash[:notice] = "退会が完了しました"
+      redirect_to root_path
+    else 
+      flash[:alert] = "退会処理に失敗しました"
+      render :edit
+    end
+  end
+
   private 
   def user_params
     params.require[:user].permit[:name, :profile_image, :introduction]

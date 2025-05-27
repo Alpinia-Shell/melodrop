@@ -5,9 +5,39 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  namespace :admin do 
+    resources :users, only:[:index, :show, :edit, :update]
+    resources :posts, only:[:index, :show, :destroy]
+    resources :post_comments, only:[:index, :show, :destroy]
+    get '/search' => 'serches#search'
+    resources :tags, only:[:index, :create, :destroy]
+  end
+
   devise_for :users, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: 'public/sessions'
   }
+
+  scope module: :public do
+    get '/mypage' => 'users#mypage'
+    get '/users/destroy_confirm' => 'users#destroy_confirm'
+    resources :users, only:[:edit, :show, :update, :destroy] do
+      resource :relationships, only:[:create, :destroy]
+    end
+    get '/users/:user_id/following' => 'relationships#following'
+    get '/users/:user_id/followers' => 'relationships#followers'
+
+    resources :rooms, only:[:create, :index, :show] do
+      resources :messages, only:[:create]
+    end
+
+    resources :notifications, only:[:update]
+    get '/search' => 'serches#shearch' 
+
+    resources :posts do
+      resources :post_comments, only:[:create, :destroy]
+      resource :favorites, only:[:create, :destroy]
+    end
+  end
 
 end

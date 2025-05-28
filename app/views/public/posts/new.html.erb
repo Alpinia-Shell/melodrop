@@ -1,0 +1,19 @@
+<h1>何を知らせよう？</h1>
+  <%= form_with model:@post do |f| %>
+    <div class="field">
+      <%= f.label :title, "タイトル:" %><br />
+      <%= f.text_field :title, autofocus: true, placeholder: "タイトルを入力してください" %>
+    </div>
+
+    <div class="field">
+      <%= f.label :images, "画像を選択（最大3枚まで）:" %>
+      <%= f.file_field :images, multiple: true, accept: 'image/*' %>
+    </div>
+
+    <div class="field">
+      <%= f.label :body, "本文: "%>
+      <%= f.text_area :body, placeholder: "200字以内で入力してください" %>
+    </div>
+
+    <%= f.submit '投稿する' %>
+  <% end %>

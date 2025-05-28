@@ -13,10 +13,10 @@
 
   <body class="d-flex flex-column vh-100">
     <%= render 'layouts/header' %>
-      <main class="mb-auto">
         <% flash.each do |message_type, message| %>
           <% message_type %><%= message %>
         <% end %>
+      <main class="mb-auto">
         <%= yield %>
       </main>
     <%= render 'layouts/footer' %>

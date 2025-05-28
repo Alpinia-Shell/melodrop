@@ -17,6 +17,11 @@ class Public::UsersController < ApplicationController
     end   
   end
 
+  def show
+    @user = User.find(params[:id])
+    @posts = @user.posts
+  end
+
   def destroy_confirm
     @user = current_user
   end
@@ -34,7 +39,7 @@ class Public::UsersController < ApplicationController
 
   private 
   def user_params
-    params.requir(:user).permit(:name, :profile_image, :introduction)
+    params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
   def ensure_current_user

@@ -1,0 +1,12 @@
+<h2>どこを変える？</h2>
+<%= form_with model:@post, method: :update do |f| %>
+  <%= f.label :title, "タイトル" %>
+  <%= f.text_field :title %>
+  <%= f.label :image, "画像" %>
+  <%= f.file_field :image ,accept: 'image/*' %>
+  <%= f.label :body, "本文" %>
+  <%= f.text_field :body %>
+  <%= f.submit '保存' %>
+<% end %>
+<%= link_to "戻る", post_path(@post) %>
+<%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除するの？(´・ω・`)"} %>

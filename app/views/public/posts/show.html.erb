@@ -1,0 +1,16 @@
+<div class = "row">
+  <div class ="col-3">
+    <%= render 'public/users/sidebar' %>
+  </div>
+
+  <div class = "col-6">
+    <%= image_tag @post.user.get_profile_image(100,100) %>
+    <%= @post.title %>
+    <%= image_tag @post.image %>
+    <%= @post.body %>
+    <% if @post.user == current_user %>
+      <%= link_to "編集", edit_post_path(@post) %>
+    <% end %>
+    <%# ここにコメント %>
+  </div>
+</div>

@@ -6,11 +6,15 @@
 
   <div class = "col-6">
     <% @posts.each do |post| %>
-      <%= image_tag post.user.get_profile_image(100,100) %>
-      <%= post.user.name %>
-      <%= post.title %>
-      <%= image_tag post.image %>
-      <%= post.body %>
+      <%= link_to user_path(post.user) do %>
+        <%= image_tag post.user.get_profile_image(100,100) %>
+        <%= post.user.name %>
+      <% end %>
+      <%= link_to post_path(post) do %>
+        <%= post.title %>
+        <%= image_tag post.image %>
+        <%= post.body %>
+      <% end %>
     <% end %>
   </div>
 </div>

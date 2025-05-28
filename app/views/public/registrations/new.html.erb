@@ -1,33 +1,48 @@
-<h3>登録して始めよう</h3>
-<%= form_with model: @user, url: user_registration_path do |f| %>
-  <%= render "public/shared/error_messages", resource: @user %>
+<div class="container">
+  <h3>登録して始めよう</h3>
+  <%= form_with model: @user, url: user_registration_path do |f| %>
+    <%= render "public/shared/error_messages", resource: @user %>
 
-  <div class="field">
-    <%= f.label :name, "ユーザーネーム" %><br />
-    <%= f.text_field :name, autofocus: true, placeholder: "2文字以上20文字以内" %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :email, "メールアドレス" %><br />
-    <%= f.email_field :email, autocomplete: "email", placeholder: "フリーアドレスを推奨" %>
-  </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">
+          <i class="fa-solid fa-user" style="color: #74C0FC;"></i>
+        </span>
+        <%= f.text_field :name, class: "form-control", autofocus: true, placeholder: "ユーザーネーム ※2文字以上20文字以内" %>
+      </div>
+    </div>
+    
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">
+          <i class="fa-solid fa-envelope" style="color: #74C0FC;"></i>
+        </span>
+        <%= f.email_field :email, class: "form-control",autocomplete: "email", placeholder: "メールアドレス ※フリーアドレスを推奨" %>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password, "パスワード" %>
-    <% if @minimum_password_length %>
-    <span>(<%= @minimum_password_length %> 文字以上で入力してね）</span>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">
+          <i class="fa-solid fa-key" style="color: #74C0FC;"></i>
+        </span>
+        <%= f.password_field :password, autocomplete: "new-password", class: "form-control",placeholder: "#{@minimum_password_length}文字以上で入力してください"%>
+      </div>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, "パスワード確認用" %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"もう一度メールアドレスを入力してね" %>
-  </div>
+    <div class="mb-3">
+      <div class="input-group">
+        <span class="input-group-text" id="basic-addon1">
+          <i class="fa-solid fa-circle-check" style="color: #74C0FC;"></i>
+        </span>
+          <%= f.password_field :password_confirmation, class: "form-control",autocomplete: "new-password", placeholder:"もう一度パスワードを入力してください" %>
+      </div>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "これで決まり" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "これで決まり" %>
+    </div>
+  <% end %>
 
-<p>登録済みの場合は、<%= render "public/shared/links" %>からログインしてね</p>
+  <p>登録済みの場合は、<%= render "public/shared/links" %>からログインしてね</p>
+</div>

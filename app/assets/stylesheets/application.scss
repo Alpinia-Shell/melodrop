@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+ @font-face {
+   font-family: 'Boku2';
+   src: asset-url('Boku2-Regular.otf') format('opentype');
+   font-weight: normal;
+   font-style: normal;
+ }
+ 
+ body, html, * {
+  font-family: 'Boku2', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif !important;
+}

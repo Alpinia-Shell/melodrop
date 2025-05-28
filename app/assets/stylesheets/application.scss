@@ -25,6 +25,10 @@
   font-family: "Font Awesome 6 Free" !important;
   font-style: normal;
 }
+
+input[type="password"] {
+  font-family: system-ui, sans-serif !important;
+}
  
  body, html, * {
   font-family: 'Boku2', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif !important;

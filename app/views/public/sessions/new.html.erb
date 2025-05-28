@@ -1,23 +1,36 @@
-<h2>待ってたよ！</h2>
+<div class="container">
+  <div class = "row">
+    <div class="col-6 mx-auto mt-5 py-3 shadow rounded-3" >
+      <h2 class= "mb-4 text-center">ログイン</h2>
+      <% if flash[:alert] %>
+        <div class="alert alert-danger"><%= flash[:alert] %></div>
+      <% end %>
 
-<% if flash[:alert] %>
-  <div class="alert alert-danger"><%= flash[:alert] %></div>
-<% end %>
+      <%= form_with model: @user, url: user_session_path do |f| %>
+        <div class="mb-4">
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">
+              <i class="fa-solid fa-envelope" style="color: #74C0FC;"></i>
+            </span>
+            <%= f.email_field :email, class: "form-control",autofocus: true, autocomplete: "email",placeholder: "登録時のメールアドレスを入力してね" %>
+          </div>
+        </div>
 
-<%= form_with model: @user, url: user_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email , "メールアドレス" %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+        <div class="mb-4">
+          <div class="input-group">
+            <span class="input-group-text" id="basic-addon1">
+              <i class="fa-solid fa-key" style="color: #74C0FC;"></i>
+            </span>
+              <%= f.password_field :password, class: "form-control", autocomplete: "current-password",placeholder: "パスワード6文字以上" %>
+          </div>
+        </div>
+
+        <div class="actions text-center my-4">
+          <%= f.submit "ログイン" ,class: "btn btn-outline-info rounded-pill" %>
+        </div>
+      <% end %>
+
+      <p class ="text-center">会員登録がお済でない方は<%= render "public/shared/links" %></p>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password , "パスワード" %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
-<% end %>
-
-会員登録がお済でない方は<%= render "public/shared/links" %>よりご登録をお願いします。
+</div>

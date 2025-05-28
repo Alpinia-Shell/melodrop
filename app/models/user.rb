@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   validates :name, length: { minimum: 2 , maximum: 20 }
   has_one_attached :profile_image
+  has_many :posts, dependent: :destroy
 
   GUEST_USER_EMAIL = "guest@example.com"
 

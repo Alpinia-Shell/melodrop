@@ -1,5 +1,10 @@
-<p>退会後は、一切の情報を戻すことはできません。<br/>
-それでも退会しますか？</p>
-
-<%= link_to "戻る", edit_user_path(@user) %>
-<%= link_to "退会する" , user_path(@user), method: :delete %>
+<div class = "container">
+  <div class = "row">
+    <div class = "col-8 text-center mx-auto mt-5 py-3 shadow rounded-3">
+      <p class = "my-5">退会後は、一切の情報を戻すことはできません。<br/>
+      退会してよろしいですか？</p>
+      <div class = "mb-4"><%= link_to "戻る", edit_user_path(@user) ,class: "btn btn-outline-primary rounded-pill"%></div>
+      <div class = "mb-5"><%= link_to "退会する" , user_path(@user), method: :delete ,class: "btn btn-outline-danger rounded-pill"%></div>
+    </div>
+  </div>
+</div>

@@ -6,7 +6,8 @@
     <h3 class = "mb-4">何を知らせよう？</h3>
       <%= form_with model:@post do |f| %>
         <div class="mb-3">
-          <%= f.label :title, "タイトル:" %><%= f.text_field :title,class:"form-control", autofocus: true, placeholder: "タイトルを入力してください" %>
+          <%= f.label :title, "タイトル:" %>
+          <%= f.text_field :title,class:"form-control", autofocus: true, placeholder: "タイトルを入力してください" %>
         </div>
 
         <div class="mb-3">

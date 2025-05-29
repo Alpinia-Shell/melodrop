@@ -1,21 +1,36 @@
-<h2>どうする？</h2>
-  <%= form_with model: @user do |f| %>
-    <div class="field">
-      <%= f.label :name , ":あなたの名前" %><br />
-      <%= f.text_field :name, autofocus: true %>
-    </div>
+<div class = "row">
+  <div class = "col-2">
+    <%= render 'public/users/sidebar' %>
+  </div>
+  <div class = "col-8 mt-5">
+    <h3 class = "mb-4">どうする？</h3>
+    <%= form_with model: @user do |f| %>
+      <div class="mb-3">
+        <%= f.label :name , ":あなたの名前" %>
+        <%= f.text_field :name, autofocus: true ,class:"form-control" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :profile_image , ":あなたの写真" %><br />
-      <%= f.file_field :profile_image, accept: 'image/*' %>
-    </div>
+      <div class="mb-3">
+        <%= f.label :profile_image , ":あなたの写真" %>
+        <%= f.file_field :profile_image, accept: 'image/*',class:"form-control" %>
+      </div>
 
-    <div class="field">
-      <%= f.label :introduction , ":あなたの紹介" %><br />
-      <%= f.text_field :introduction, autofocus: true %>
-    </div>
-    <%= f.submit "保存する" %>
-  <% end %>
-
-  <%= link_to "戻る", posts_path %>
-  <%= link_to "退会する", users_destroy_confirm_path %>
+      <div class="mb-3">
+        <%= f.label :introduction , ":あなたの紹介" %><br />
+        <%= f.text_field :introduction, autofocus: true,class:"form-control" ,placeholder: "50字以内で入力してください"%>
+      </div>
+      <div class = "mt-4 d-flex justify-content-between">
+        <div>
+          <%= link_to "戻る", posts_path,class: " btn btn-outline-primary rounded-pill" %>
+        </div>
+        <div>
+          <%= f.submit "保存する",class: " text-end btn btn-outline-success rounded-pill" %>
+          <%= link_to "退会する", users_destroy_confirm_path,class: "btn btn-outline-danger rounded-pill" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  <div class = "col-2">
+    <%= render 'public/posts/sidebarleft' %>
+  </div>
+</div>

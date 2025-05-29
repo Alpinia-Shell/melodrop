@@ -44,7 +44,7 @@ class Public::SessionsController < Devise::SessionsController
     return if user.nil?
     return unless user.valid_password?(params[:user][:password])
     unless user.is_active?
-      flash[:alert] = "このアカウントは退会されています"
+      flash[:alert] = "このアカウントは退会されているため、ログインできません"
       redirect_to new_user_registration_path
     end
   end

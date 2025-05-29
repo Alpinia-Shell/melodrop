@@ -1,19 +1,29 @@
-<h1>何を知らせよう？</h1>
-  <%= form_with model:@post do |f| %>
-    <div class="field">
-      <%= f.label :title, "タイトル:" %><br />
-      <%= f.text_field :title, autofocus: true, placeholder: "タイトルを入力してください" %>
+<div class = "row">
+  <div class = "col-2">
+    <%= render 'public/users/sidebar' %>
+  </div>
+  <div class = "col-8 mt-5">
+    <h3 class = "mb-4">何を知らせよう？</h3>
+      <%= form_with model:@post do |f| %>
+        <div class="mb-3">
+          <%= f.label :title, "タイトル:" %><%= f.text_field :title,class:"form-control", autofocus: true, placeholder: "タイトルを入力してください" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :image, "画像:" %>
+          <%= f.file_field :image, accept: 'image/*',class:"form-control" %>
+        </div>
+
+        <div class="mb-3">
+          <%= f.label :body, "本文: "%>
+          <%= f.text_area :body, placeholder: "200字以内で入力してください",class:"form-control" %>
+        </div>
+
+        <%= f.submit '投稿する',class: "btn btn-outline-success rounded-pill" %>
+      <% end %>
     </div>
 
-    <div class="field">
-      <%= f.label :image, "画像を選択:" %>
-      <%= f.file_field :image, accept: 'image/*' %>
-    </div>
-
-    <div class="field">
-      <%= f.label :body, "本文: "%>
-      <%= f.text_area :body, placeholder: "200字以内で入力してください" %>
-    </div>
-
-    <%= f.submit '投稿する' %>
-  <% end %>
+  <div class = "col-2">
+    <%= render 'public/posts/sidebarleft' %>
+  </div>
+</div>

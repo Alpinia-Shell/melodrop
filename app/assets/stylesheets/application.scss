@@ -36,11 +36,28 @@ input[type="password"] {
 
 .text-truncate-multiline {
   display: -webkit-box;
-  -webkit-line-clamp: 2; /* 表示する最大行数 */
   -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2; // ← これを追加
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.main-visual{
+  width:100%;
+  background-image: url("back_white.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.main-wrap{
+  width:100%;
+}
+
+.picture:nth-child(odd){
+  background-color:#C2EEFF;
+}
+
 
 
 

@@ -32,7 +32,7 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = "編集が完了しました(o^―^o)(o^―^o)"
+      flash[:notice] = "編集が完了しました(o^―^o)"
       redirect_to posts_path
     else
       flash.now[:alert] = "保存に失敗しました(´；ω；`)"
@@ -41,7 +41,13 @@ class Public::PostsController < ApplicationController
   end
 
   def destroy
-    
+    if Post.find(params[:id]).destroy
+    flash[:notice] = "投稿を削除しました"
+    redirect_to user_path(current_user)
+    else
+      flash[:aleart] = "投稿の削除に失敗しました"
+      render :edit
+    end
   end
   
   private

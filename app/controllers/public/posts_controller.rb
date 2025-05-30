@@ -11,10 +11,9 @@ class Public::PostsController < ApplicationController
     @post.user = current_user
     if @post.save
       @post.image.attach(params[:post][:image]) if params[:post][:image].present?
-      flash[:notice] = "投稿成功！(o^―^o)"
+      flash[:notice] = "雫の提供に成功しました💧"
       redirect_to posts_path
     else
-      puts "保存失敗の理由：#{@post.errors.full_messages}"
       render :new
     end
   end
@@ -37,17 +36,16 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "編集が完了しました(o^―^o)"
       redirect_to posts_path
     else
-      flash.now[:alert] = "保存に失敗しました(´；ω；`)"
       render :edit
     end
   end
 
   def destroy
     if Post.find(params[:id]).destroy
-    flash[:notice] = "投稿を削除しました"
+    flash[:notice] = "雫を削除しました"
     redirect_to user_path(current_user)
     else
-      flash[:aleart] = "投稿の削除に失敗しました"
+      flash[:aleart] = "雫の削除に失敗しました"
       render :edit
     end
   end

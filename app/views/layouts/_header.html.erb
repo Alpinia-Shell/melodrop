@@ -1,15 +1,42 @@
 <header>
-  <%= link_to root_path do %>
-    <%= image_tag "logo_gray.png", alt: "MeloDrop", width: 350, height: 100  %>
-  <% end %>
-  <% if user_signed_in? %>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    <%= link_to "トップ", root_path %>
-    <%= link_to "みんなの投稿", posts_path %>
-    <%= %>
-  <% else %>
-    <%= link_to "新規登録",new_user_registration_path %>
-    <%= link_to "ログイン",new_user_session_path %>
-    <%= link_to "ゲストログイン", guest_sign_in_path, method: :post %>
-  <% end %>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <%= link_to root_path do %>
+        <%= image_tag "melodrop.png", alt: "MeloDrop", width: 350, height: 100  %>
+      <% end %>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <% if user_signed_in? %>
+            <li class="nav-item border border-3 border-info me-3 p-2 rounded-3 ">
+              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-decoration-none" %>
+            </li>
+            <li class="nav-item border border-3 border-info me-3 p-2 rounded-3">
+              <%= link_to "トップ", root_path, class:"text-decoration-none" %>
+            </li>
+            <li class="nav-item border border-3 border-info me-3  p-2 rounded-3">
+              <%= link_to "みんなの投稿", posts_path, class:"text-decoration-none" %>
+            </li>
+          <% else %>
+            <li class="nav-item border border-info border-3 me-3  p-2 rounded-3">
+              <%= link_to "新規登録",new_user_registration_path, class:"text-decoration-none" %>
+            </li>
+            <li class="nav-item border border-info border-3 me-3  p-2 rounded-3">
+              <%= link_to "ログイン",new_user_session_path, class:"text-decoration-none" %>
+            </li>
+            <li class="nav-item border border-info border-3 me-3  p-2 rounded-3">
+              <%= link_to "ゲストログイン", guest_sign_in_path, method: :post, class:"text-decoration-none" %>
+            </li>
+          <% end %>
+        </ul>
+        <%# 検索フォーム後で追加 %>
+        <form class="d-flex d-lg-none" role="search">
+          <input class="form-control me-2" type="search" name="query" id="searchInput" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
 </header>

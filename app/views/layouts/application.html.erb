@@ -14,8 +14,17 @@
   <body class="d-flex flex-column vh-100">
     <%= render 'layouts/header' %>
         <% flash.each do |message_type, message| %>
-          <% message_type %><%= message %>
-        <% end %>
+  <% bs_class = case message_type.to_sym
+      when :notice then "alert-success"
+      when :alert  then "alert-warning"
+      when :error  then "alert-danger"
+      else "alert-info"
+    end %>
+
+    <div class="alert <%= bs_class %> alert-dismissible fade show m-3" role="alert">
+      <%= message %>
+    </div>
+  <% end %>
       <main class="mb-auto">
         <%= yield %>
       </main>

@@ -1,8 +1,9 @@
 <div class = "container">
   <div class = "row">
     <div class = "col-8 text-center mx-auto mt-5 py-3 shadow rounded-3">
-      <p class = "my-5">退会後は、一切の情報を戻すことはできません。<br/>
+      <p class = "mt-5 mb-4 ">退会後は、一切の情報を元に戻すことはできません。<br/>
       退会してよろしいですか？</p>
+      <%= image_tag 'terusyonn.png', size: '250x300'%>
       <div class = "mb-4"><%= link_to "戻る", edit_user_path(@user) ,class: "btn btn-outline-primary rounded-pill"%></div>
       <div class = "mb-5"><%= link_to "退会する" , user_path(@user), method: :delete ,class: "btn btn-outline-danger rounded-pill"%></div>
     </div>

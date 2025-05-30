@@ -1,8 +1,10 @@
 <% if user.errors.any? %>
-  <%= user.errors.count %>件のエラーが発生しました
-    <ul>
-      <p><% user.errors.full_messages.each do |message| %></p>
-      <li><%= message %></li>
-    </ul>
-  <% end %>
+  <div class = "alert alert-danger p-3 rounded">
+    <%= user.errors.count %>件、雫の要素が足りないようです
+      <ul>
+        <p><% user.errors.full_messages.each do |message| %></p>
+        <li><%= message %></li>
+      </ul>
+    <% end %>
+  </div>
 <% end %>

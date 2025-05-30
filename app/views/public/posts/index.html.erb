@@ -8,7 +8,7 @@
   <div class="col-8 p-0 content-area d-flex flex-column align-items-center">
     <div class="overflow-auto w-100 py-5">
       <% @posts.each do |post| %>
-        <%= link_to post_path(post), style: "width: 100%;" do %>
+        <%= link_to post_path(post), style: "width: 100%;" ,class: "text-decoration-none d-block text-dark" do %>
           <div class="w-100 border-top p-4">
             <div class="row">
               <div class="col-2 text-center">

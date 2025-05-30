@@ -5,8 +5,8 @@
     <div class = "text-center mt-2 mb-5"><%= current_user.name %></div>
   
   <div class = "text-center mt-4">
-    <div class = "mb-5"><i class="fa-solid fa-music" style="color: #84c5e1;"></i> <%= link_to "マイページ",user_path(current_user) %></div>
-    <div class = "mb-5"><i class="fa-solid fa-feather" style="color: #84c5e1;"></i> <%= link_to "新規投稿",new_post_path %></div>
-    <div class = "mb-5"><i class="fa-solid fa-bell" style="color: #84c5e1;"></i><%= link_to "通知",new_post_path %></div>
+    <div class = "mb-5"><i class="fa-solid fa-music" style="color: #84c5e1;"></i> <%= link_to "マイページ",user_path(current_user) ,class: "text-decoration-none text-dark" %></div>
+    <div class = "mb-5"><i class="fa-solid fa-feather" style="color: #84c5e1;"></i> <%= link_to "新規投稿",new_post_path ,class: "text-decoration-none text-dark" %></div>
+    <div class = "mb-5"><i class="fa-solid fa-bell" style="color: #84c5e1;"></i><%= link_to "通知",new_post_path ,class: "text-decoration-none text-dark" %></div>
   </div>
 </div>

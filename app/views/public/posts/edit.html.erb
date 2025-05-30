@@ -4,6 +4,7 @@
     <%= render 'public/users/sidebar' %>
   </div>
   <div class = "col-8 mt-5">
+    <%= render 'layouts/errors', user: @post %>
     <h3 class = "mb-4">どこを変える？</h3>
       <%= form_with model:@post do |f| %>
       <div class="mb-3">

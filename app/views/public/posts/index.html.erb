@@ -23,7 +23,7 @@
                     <%= image_tag post.image, style: "max-height:100%; max-width:100%; object-fit:contain;" %>
                   </div>
                 <% end %>
-                <div class="text-truncate-multiline mx-auto"><%= post.body %></div>
+                <div class="text-truncate-multiline mx-auto"><%= simple_format(post.body) %></div>
               </div>
               <div class="col-2 p-0 text-start">
                 ・タグ<br>・タグ

@@ -1,6 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_current_user, only: [:edit, :update]
+  before_action :reject_guest_user
 
   def edit
     @user = User.find(params[:id])
@@ -44,5 +45,11 @@ class Public::UsersController < ApplicationController
   def ensure_current_user
     @user = User.find(params[:id])
     redirect_to root_path unless @user == current_user   
+  end
+
+  def reject_guest_user
+    if current_user.guest?
+      redirect_to posts_path, alert: 'ゲストユーザーはこの操作を行えません。'
+    end
   end
 end

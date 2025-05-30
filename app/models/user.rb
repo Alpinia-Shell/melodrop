@@ -24,4 +24,8 @@ class User < ApplicationRecord
       user.name = "guestuser"
     end
   end
+
+  def guest?
+    email == 'guest@example.com'
+  end
 end

@@ -1,4 +1,7 @@
 class Public::PostsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :reject_guest_user, only:[:create, :new, :edit, :update]
+
   def new
     @post = Post.new
   end
@@ -52,5 +55,11 @@ class Public::PostsController < ApplicationController
   private
   def post_params
     params.require(:post).permit(:title, :body, :image)
+  end
+
+  def reject_guest_user
+    if current_user.guest?
+      redirect_to posts_path, alert: 'ゲストユーザーはこの操作を行えません。'
+    end
   end
 end

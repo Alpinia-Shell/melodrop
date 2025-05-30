@@ -3,6 +3,7 @@
     <%= render 'public/users/sidebar' %>
   </div>
   <div class = "col-8 mt-5">
+    <%= render 'layouts/errors' ,user: @user %>
     <h3 class = "mb-4">どうする？</h3>
     <%= form_with model: @user do |f| %>
       <div class="mb-3">

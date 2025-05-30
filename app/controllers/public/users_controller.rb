@@ -12,7 +12,6 @@ class Public::UsersController < ApplicationController
       flash[:notice] = "プロフィールの更新に成功したよ(o^―^o)"
       redirect_to user_path(@user)
     else
-      flash[:alert] = "プロフィールの更新に失敗したよ(´・ω・`)"
       render :edit 
     end   
   end

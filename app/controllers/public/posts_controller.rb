@@ -12,8 +12,7 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path
     else
       puts "保存失敗の理由：#{@post.errors.full_messages}"
-      flash.now[:alert] = "投稿に失敗しました(´・ω・`)"
-      render now :new
+      render :new
     end
   end
 

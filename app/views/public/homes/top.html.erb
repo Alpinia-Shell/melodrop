@@ -51,9 +51,9 @@
     </div>
     
       <div class = "d-flex justify-content-around pb-5">
-        <h4><%= link_to "新規登録", new_user_registration_path %> </h4>
-        <h4><%= link_to "ゲストログイン", guest_sign_in_path, method: :post %> </h4>
-        <h4><%= link_to "ログイン", new_user_session_path %></h4>
+        <h4><%= link_to "とうろく", new_user_registration_path, class: "text-decoration-none" %> </h4>
+        <h4><%= link_to "おためし", guest_sign_in_path, method: :post, class: "text-decoration-none" %></h4>
+        <h4><%= link_to "ログイン", new_user_session_path, class: "text-decoration-none" %></h4>
       </div>
   <% end %>
 </div>

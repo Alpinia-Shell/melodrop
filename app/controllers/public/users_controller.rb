@@ -29,7 +29,7 @@ class Public::UsersController < ApplicationController
   def destroy
     if current_user.update(is_active: false)
       reset_session
-      flash[:notice] = "退会が完了しました"
+      flash[:notice] = "退会が完了しました。MeloDropはいつでもあなたの帰りを待っています。"
       redirect_to new_user_registration_path
     else 
       flash[:alert] = "退会処理に失敗しました"

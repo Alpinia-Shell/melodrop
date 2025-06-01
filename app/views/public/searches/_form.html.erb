@@ -1,0 +1,6 @@
+<%= form_with url: search_path, method: :get do |f| %>
+  <div class = "d-flex ms-2">
+    <%= f.text_field :content, placeholder: "キーワードを入力してね" %>
+    <%= f.submit "検索",class: "ms-2" %>
+  </div>
+<% end %>

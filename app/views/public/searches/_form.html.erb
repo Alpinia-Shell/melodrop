@@ -1,6 +1,8 @@
 <%= form_with url: search_path, method: :get do |f| %>
   <div class = "d-flex ms-2">
-    <%= f.text_field :content, placeholder: "キーワードを入力してね" %>
-    <%= f.submit "検索",class: "ms-2" %>
+    <%= f.text_field :content, placeholder: "キーワードを入力してね", class:"form-control" %>
+    <%= button_tag type: "submit", class: "ms-2 btn btn-outline-primary" do %>
+      <i class="fa-solid fa-magnifying-glass" ></i>
+    <% end %>
   </div>
 <% end %>

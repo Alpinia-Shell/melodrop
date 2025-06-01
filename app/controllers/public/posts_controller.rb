@@ -15,7 +15,7 @@ class Public::PostsController < ApplicationController
       flash[:notice] = "雫の提供に成功しました💧"
       redirect_to posts_path
     else
-      render :new
+      render :new 
     end
   end
 

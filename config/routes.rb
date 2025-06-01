@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :users, only:[:index, :show, :edit, :update]
     resources :posts, only:[:index, :show, :destroy]
     resources :post_comments, only:[:index, :show, :destroy]
-    get '/search' => 'serches#search'
+    get '/search' => 'searches#search'
     resources :tags, only:[:index, :create, :destroy]
   end
 
@@ -24,7 +24,6 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'homes#top'
-    get '/mypage' => 'users#mypage'
     get '/users/destroy_confirm' => 'users#destroy_confirm'
     resources :users, only:[:edit, :show, :update, :destroy] do
       resource :relationships, only:[:create, :destroy]
@@ -37,7 +36,7 @@ Rails.application.routes.draw do
     end
 
     resources :notifications, only:[:update]
-    get '/search' => 'serches#shearch' 
+    get '/search' => 'searches#search' 
 
     resources :posts do
       resources :post_comments, only:[:create, :destroy]

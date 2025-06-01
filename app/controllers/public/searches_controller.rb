@@ -1,8 +1,8 @@
-class Public::SeachesController < ApplicationController
+class Public::SearchesController < ApplicationController
   before_action :authenticate_user!
 
   def search
-    @posts = Post.where("content LIKE?", "%#{params[:content]}%")
-    @content = Params[:content]
+    @posts = Post.where("title LIKE ? OR body LIKE ?", "%#{params[:content]}%", "%#{params[:content]}%")
+    @content = params[:content]
   end
 end

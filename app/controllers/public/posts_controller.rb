@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
-  before_action :reject_guest_user, only:[:create, :new, :edit, :update]
+  before_action :is_matching_login_user, only:[:edit, :update, :destroy]
+  before_action :reject_guest_user, only:[:create, :new, :edit, :update, :destroy]
 
   def new
     @post = Post.new
@@ -55,9 +56,17 @@ class Public::PostsController < ApplicationController
     params.require(:post).permit(:title, :body, :image)
   end
 
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user == current_user 
+      redirect_to posts_path
+    end    
+  end
+
   def reject_guest_user
     if current_user.guest?
       redirect_to posts_path, alert: 'ゲストユーザーはこの操作を行えません。'
     end
   end
+
 end

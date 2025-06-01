@@ -1,6 +1,6 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_current_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit, :update, :destroy]
   before_action :reject_guest_user
 
   def edit
@@ -42,9 +42,11 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :profile_image, :introduction)
   end
 
-  def ensure_current_user
-    @user = User.find(params[:id])
-    redirect_to root_path unless @user == current_user   
+  def is_matching_login_user
+    user = User.find(params[:id])
+    unless user == current_user 
+      redirect_to user_path(current_user)
+    end    
   end
 
   def reject_guest_user

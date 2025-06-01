@@ -16,6 +16,9 @@
             <li class="nav-item border border-3 border-info me-3 p-2 rounded-3">
               <%= link_to "トップ", root_path, class:"text-decoration-none" %>
             </li>
+             <li class="nav-item border border-3 border-info me-3 p-2 rounded-3">
+              <%= link_to "マイページ", user_path(current_user), class:"text-decoration-none" %>
+            </li>
             <li class="nav-item border border-3 border-info me-3  p-2 rounded-3">
               <%= link_to "みんなの雫", posts_path, class:"text-decoration-none" %>
             </li>

@@ -34,10 +34,9 @@
             </li>
           <% end %>
         </ul>
-        <%# 検索フォーム後で追加 %>
-        <form class="d-flex d-lg-none" role="search">
-          <input class="form-control me-2" type="search" name="query" id="searchInput" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
+        <div class = "d-lg-none">
+          <%= render 'public/searches/form' %>
+        </div>
         </form>
       </div>
     </div>

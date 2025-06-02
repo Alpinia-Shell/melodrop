@@ -1,4 +1,5 @@
 <div class = "row">
+  <%# サイドバー左 %>
   <div class ="col-2 p-0">
     <%= render 'public/users/sidebar' %>
   </div>
@@ -26,11 +27,35 @@
             <%= link_to "編集", edit_post_path(@post) %>
             <%= link_to "削除", post_path(@post), method: :delete, data: {confirm: "本当に削除するの？(´・ω・`)"} %>
           <% end %>
-          <%# ここにコメント %>
+
+          <div class = "row border-top">
+            <%# コメント表示 %>
+            <% @post.post_comments.each do |post_comment| %>
+              <div class = "col-3">
+                <%= image_tag post_comment.user.get_profile_image(100,100) , class: "rounded-circle border black" %>
+                <%= post_comment.user.name %>
+              </div>
+              <div class = "col-9">
+                <%= post_comment.comment %>
+              </div>
+            <% end %>
+          </div>
+
+          <%# コメントフォーム %>
+          <div class = "mt-5">
+            <%= form_with model: [@post, @post_comment] do |f| %>
+              <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに書いてね", class: "form-control" %>
+              <%= button_tag type: "submit", class: " btn btn-outline-primary mt-3" do  %>
+                そうしん<i class="fa-regular fa-paper-plane" style="color: #74C0FC;"></i>
+              <% end %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
+
+  <%# サイドバー右 %>
   <div class = "col-2">
     <%= render 'public/posts/sidebarleft' %>
   </div>

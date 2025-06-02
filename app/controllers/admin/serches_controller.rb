@@ -1,2 +1,2 @@
-class Admin::SerchesController < ApplicationController
+class Admin::SerchesController < Admin::BaseController
 end

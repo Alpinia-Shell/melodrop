@@ -1,2 +1,2 @@
-class Admin::TagsController < ApplicationController
+class Admin::TagsController < Admin::BaseController
 end

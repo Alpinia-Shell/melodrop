@@ -1,0 +1,60 @@
+<div class = "container">
+  <div class = "mb-5 border-bottom">
+    <h2>ユーザー情報詳細</h2>
+    <div class = "row">
+      <div  class = "col-3">
+       <p>ユーザーID</p>
+       <p>ユーザーネーム</p>
+       <p>画像</p>
+       <br/><br/><br/><br/>
+       <p>登録メールアドレス</p>
+       <p>ステータス</p>
+       <p>紹介文</p>
+      </div>
+      <div class = "col-5">
+        <p><%= @user.id %></p>
+        <p><%= @user.name %></p>
+        <p><%= image_tag @user.get_profile_image(100,100) %></p>
+        <p><%= @user.email %></p>
+        <p><%= @user.is_active%></p>
+        <p><%= @user.introduction %></p>
+      </div>
+      <div class = "col-4">
+        <%= link_to "編集",edit_admin_user_path(@user) %>
+      </div>
+    </div>
+  </div>
+
+  <h2>ユーザー投稿一覧</h2>
+  <table class = "table">
+    <tr>
+      <th>投稿ID</th>
+      <th>タイトル</th>
+      <th>画像</th>
+      <th>本文</th>
+      <th>作成日</th>
+      <th>更新日</th>
+      <th></th>
+      <th></th>
+    </tr>
+    <% @posts.each do |post| %>
+      <tr>
+        <td><%= post.id %></td>
+        <td><%= post.title %></td>
+        <td>
+          <% if post.image.attached? %>
+            <%= image_tag post.image, size:"100x100" %>
+          <% end %>
+        </td>
+        <td><%= post.body %></td>
+        <td><%= post.created_at.strftime("%Y%m%d") %></td>
+        <td><%= post.updated_at.strftime("%Y%m%d") %></td>
+        <td><%= link_to "編集",admin_post_path(post),class: "btn btn-success" %></td>
+        <td><%= link_to "削除",admin_post_path(post), method: :delete, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+

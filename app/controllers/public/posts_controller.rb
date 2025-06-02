@@ -66,7 +66,8 @@ class Public::PostsController < ApplicationController
 
   def reject_guest_user
     if current_user.guest?
-      redirect_to posts_path, alert: 'ゲストユーザーはこの操作を行えません。'
+      flash[:alert] = "ゲストユーザーはこの操作を行えません"
+      redirect_to posts_path 
     end
   end
 

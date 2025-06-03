@@ -1,0 +1,11 @@
+<% if admin_signed_in? %>
+  <%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+    <div class = "d-flex justify-content-center  mt-3">
+      <%= f.text_field :content, placeholder: "キーワードを入力", class:"form-control", style: "max-width: 200px;" %>
+      <div class="ms-3"><%= f.select :model, options_for_select({"ユーザー" => "user", "投稿" => "post", "コメント" => "comment"}) %></div>
+      <%= button_tag type: "submit", class: "ms-2 btn btn-outline-primary" do %>
+        <i class="fa-solid fa-magnifying-glass" ></i>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

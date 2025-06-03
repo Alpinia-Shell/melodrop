@@ -1,0 +1,29 @@
+
+  <h2 class = "my-3"><span style= "border-bottom: 3px solid; border-color: orange; ">ユーザー 一覧</span></h2>
+  <table class = "table border-dark table-hover">
+    <tr class= "border-top border-dark">
+      <th class= "bg-info-subtle">User ID</th>
+      <th class= "bg-info-subtle">画像</th>
+      <th class= "bg-info-subtle">名前</th>
+      <th class= "bg-info-subtle">登録メールアドレス</th>
+      <th class= "bg-info-subtle">ステータス</th>
+    </tr>
+    
+    <% users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= image_tag user.get_profile_image(90,90) ,class: "border border-dark" %></td>
+        <td><%= link_to admin_user_path(user) do %>
+              <%= user.name %>
+            <% end %>
+        </td>
+        <td><%= user.email %></td> 
+        <% if user.is_active %>
+        <td><span class="text-success fw-bold"><%= t("enums.user.is_active.#{user.is_active}") %></span></td>
+        <% else %>
+        <td><span class="text-danger fw-bold"><%= t("enums.user.is_active.false") %></span></td>
+        <% end %>
+      </tr>  
+    <% end %>
+  </table>
+  

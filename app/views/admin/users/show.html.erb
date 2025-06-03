@@ -1,5 +1,6 @@
 <div class = "container">
   <div class = "mb-5">
+    <%# ユーザープロフィール表示 %>
     <h2 class = "my-4"><span style= "border-bottom: 3px solid; border-color: orange; ">ユーザーID "<strong><%= @user.id %></strong>" の情報詳細</span></h2>
     <div class = "row">
       <table class= "table table-bordered border-black">
@@ -51,6 +52,7 @@
     </div>
   </div>
 
+<%# 投稿一覧表示 %>
   <h2 class= "mb-3"> <span style= "border-bottom: 3px solid; border-color: orange; ">ユーザー投稿一覧</span></h2>
   <% if @posts.present? %>
     <div style="max-height: 400px; overflow-y: auto;">
@@ -91,27 +93,32 @@
     <h5 class= "text-danger"><%= "※データがありません※" %></h5>
   <% end %>
 
+<%# コメント一覧表示 %>
   <h2 class= "mb-3"><span style= "border-bottom: 3px solid; border-color: orange; ">ユーザー投稿コメント一覧</span></h2>
-  <div style="max-height: 400px; overflow-y: auto;">
-    <table class= "table table-bordered border-black">
-      <tr>
-        <th class="bg-info-subtle">コメントID</th>
-        <th class="bg-info-subtle">投稿ID</th>
-        <th class="bg-info-subtle">コメント内容</th> 
-        <th class="bg-info-subtle"></th>
-        <th class="bg-info-subtle"></th>
-      </tr>
-      <% @comments.each do |comment| %>
-        <tr style = "height: 90px;">
-          <td><%= comment.id %></td>
-          <td><%= comment.post.id %></td>
-          <td><div class= "table-text-truncate"><%= comment.comment %></div></td>
-          <td><%= link_to "詳細",admin_post_comment_path(comment),class: "btn btn-primary" %></td>
-          <td><%= link_to "削除",admin_post_comment_path(comment),method: :delete,data:{confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
+  <% if @comments.present? %>
+    <div style="max-height: 400px; overflow-y: auto;">
+      <table class= "table table-bordered border-black">
+        <tr>
+          <th class="bg-info-subtle">コメントID</th>
+          <th class="bg-info-subtle">投稿ID</th>
+          <th class="bg-info-subtle">コメント内容</th> 
+          <th class="bg-info-subtle"></th>
+          <th class="bg-info-subtle"></th>
         </tr>
-      <% end %>
-    </table>
-  </div>
+        <% @comments.each do |comment| %>
+          <tr style = "height: 90px;">
+            <td><%= comment.id %></td>
+            <td><%= comment.post.id %></td>
+            <td><div class= "table-text-truncate"><%= comment.comment %></div></td>
+            <td><%= link_to "詳細",admin_post_comment_path(comment),class: "btn btn-primary" %></td>
+            <td><%= link_to "削除",admin_post_comment_path(comment),method: :delete,data:{confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% else %>
+    <h5 class= "text-danger"><%= "※データがありません※" %></h5>
+  <% end %>
 </div>
 
 

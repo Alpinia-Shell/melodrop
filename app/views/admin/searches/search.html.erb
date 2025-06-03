@@ -1,0 +1,14 @@
+<div class= "container">
+  <% if @results.present?%>
+    <h3> "<%= @content %>"の検索結果を表示しています</h3>
+    <% if @model == 'user' %>
+      <%= render 'admin/users/user_index', users: @results %>
+    <% elsif @model == 'post' %>
+      <%= render 'admin/posts/post_index', posts: @results %>
+    <% elsif @model == 'comment'%>
+      <%= render 'admin/post_comments/post_comment_index', comments: @results %>
+    <% end %>
+  <% else %>
+    <h3>"<%= @content %>"に該当するデータはありませんでした</h3>
+  <% end %>
+</div>

@@ -18,8 +18,13 @@
             <% end %>
         </td>
         <td><%= user.email %></td> 
-        <td><%= t("enums.user.is_active.#{user.is_active}") %></td>
+        <% if user.is_active %>
+        <td><span class="text-success fw-bold"><%= t("enums.user.is_active.#{user.is_active}") %></span></td>
+        <% else %>
+        <td><span class="text-danger fw-bold"><%= t("enums.user.is_active.false") %></span></td>
+        <% end %>
       </tr>  
     <% end %>
+
   </table>
 </div>

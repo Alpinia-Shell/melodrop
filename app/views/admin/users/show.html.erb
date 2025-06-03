@@ -1,6 +1,6 @@
 <div class = "container">
   <div class = "mb-5">
-    <h2 class = "my-4"><span style= "border-bottom: 2px solid; ">ユーザー情報詳細</span></h2>
+    <h2 class = "my-4"><span style= "border-bottom: 2px solid; ">ユーザーID "<strong><%= @user.id %></strong>" の情報詳細</span></h2>
     <div class = "row">
       <table>
         <tr>
@@ -53,39 +53,44 @@
   </div>
 
   <h2> <span style= "border-bottom: 2px solid; ">ユーザー投稿一覧</span></h2>
-  <div style="max-height: 400px; overflow-y: auto;">
-    <table class = "table table-bordered">
-      <thead>
-        <tr>
-          <th>投稿ID</th>
-          <th>タイトル</th>
-          <th>画像</th>
-          <th>本文</th>
-          <th>作成日</th>
-          <th>更新日</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <% @posts.each do |post| %>
-      <tbody>
-        <tr style = "height: 100px;">
-          <td><%= post.id %></td>
-          <td><%= post.title %></td>
-          <td>
-            <% if post.image.attached? %>
-              <%= image_tag post.image, size:"100x100" %>
-            <% end %>
-          </td>
-          <td><%= post.body %></td>
-          <td><%= post.created_at.strftime("%Y%m%d") %></td>
-          <td><%= post.updated_at.strftime("%Y%m%d") %></td>
-          <td><%= link_to "削除",admin_post_path(post), method: :delete,data: { confirm: "削除してよろしいですか？ "}, class: "btn btn-danger" ,style: "white-space: nowrap;" %></td>
-        </tr>
-      </tbody>
-      <% end %>
-    </table>
-  </div>
+  <% if @posts.present? %>
+    <div style="max-height: 400px; overflow-y: auto;">
+      <table class = "table table-bordered">
+        <thead>
+          <tr>
+            <th>投稿ID</th>
+            <th>タイトル</th>
+            <th>画像</th>
+            <th>本文</th>
+            <th>作成日</th>
+            <th>更新日</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <% @posts.each do |post| %>
+        <tbody>
+          <tr style = "height: 100px;">
+            <td><%= post.id %></td>
+            <td><%= post.title %></td>
+            <td>
+              <% if post.image.attached? %>
+                <%= image_tag post.image, size:"100x100" %>
+              <% end %>
+            </td>
+            <td><%= post.body %></td>
+            <td><%= post.created_at.strftime("%Y%m%d") %></td>
+            <td><%= post.updated_at.strftime("%Y%m%d") %></td>
+            <td><%= link_to "詳細",admin_post_path(post), class: "btn btn-primary" ,style: "white-space: nowrap;" %></td>
+            <td><%= link_to "削除",admin_post_path(post), method: :delete,data: { confirm: "削除してよろしいですか？ "}, class: "btn btn-danger" ,style: "white-space: nowrap;" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  <% else %>
+    <h5 class= "text-danger"><%= "※データがありません※" %></h5>
+  <% end %>
 </div>
 
 

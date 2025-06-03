@@ -43,6 +43,18 @@ input[type="password"] {
   text-overflow: ellipsis;
 }
 
+.table-text-truncate {
+  display: block;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 300px; /* 必要に応じて幅制限も入れると安定する */
+  white-space: normal;
+}
+
 .main-visual{
   width:100%;
   background-image: image-url("back_white.png");

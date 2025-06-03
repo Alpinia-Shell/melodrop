@@ -1,0 +1,39 @@
+<div class= "container">
+  <h2><span style= "border-bottom: 2px solid; ">投稿ID "<strong><%= @post.id %></strong>"の詳細</span></h2>
+  <table class= "table">
+    <tr>
+      <th style= "white-space: nowrap;">投稿ID</th>
+      <td><%= @post.id %></td>
+    </tr>
+    <tr>
+      <th style= "white-space: nowrap;">投稿者ID</th>
+      <td><%= link_to @post.user.id, admin_user_path(@post.user) %><span class= "text-danger"> (※投稿削除はこちらから）</span></td>
+    </tr>
+    <tr>
+      <th style= "white-space: nowrap;">投稿日時</th>
+      <td><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+    </tr>
+    <tr>
+      <th style= "white-space: nowrap;">更新日時</th>
+      <td><%= @post.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+    </tr>
+    <tr>
+      <th style= "white-space: nowrap;">タイトル</th>
+      <td><%= @post.title %></td>
+    </tr>
+    <tr>
+      <th style= "white-space: nowrap;">画像</th>
+      <td>
+        <% if @post.image.present?%>
+          <%= image_tag @post.image, size:"300x300" %>
+        <% else %>
+          <%= "※画像は投稿されていません"%>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th style= "white-space: nowrap;">本文</th>
+      <td><%= simple_format(@post.body) %></td>
+    </tr>
+  </table>
+</div>

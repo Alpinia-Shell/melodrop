@@ -1,0 +1,28 @@
+<div class= "container">
+  <h2 class= "my-3"><span style= "border-bottom: 3px solid; border-color:orange ">コメントID "<strong><%= @comment.id %></strong>" の詳細</span></h2>
+  <table class= "table table-bordered border-black">
+    <tr>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">コメントID</th>
+      <td><%= @comment.id %></td>
+    </tr>
+     <tr>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">投稿者ID</th>
+      <td><%= link_to @comment.user.id, admin_user_path(@comment.user) %></td>
+    </tr>
+    <tr>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">コメント元投稿ID</th>
+      <td><%= link_to @comment.post.id, admin_post_path(@comment.post) %></td>
+    </tr>
+    <tr>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">コメント日時</th>
+      <td><%= @comment.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+    </tr>
+    <tr>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">本文</th>
+      <td><%= simple_format(@comment.comment) %></td>
+    </tr>
+  </table>
+    <div class= "text-end mb-3">
+    <%= link_to "削除", admin_post_comment_path(@comment), method: :delete,data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+  </div>
+</div>

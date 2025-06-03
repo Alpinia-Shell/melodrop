@@ -7,7 +7,7 @@
     </tr>
     <tr>
       <th style= "white-space: nowrap;" class = "bg-info-subtle">投稿者ID</th>
-      <td><%= link_to @post.user.id, admin_user_path(@post.user) %><span class= "text-danger"> (※投稿削除はこちらから）</span></td>
+      <td><%= link_to @post.user.id, admin_user_path(@post.user) %></td>
     </tr>
     <tr>
       <th style= "white-space: nowrap;" class = "bg-info-subtle">投稿日時</th>
@@ -36,4 +36,7 @@
       <td><%= simple_format(@post.body) %></td>
     </tr>
   </table>
+  <div class= "text-end mb-3">
+    <%= link_to "削除", admin_post_path(@post), method: :delete,data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+  </div>
 </div>

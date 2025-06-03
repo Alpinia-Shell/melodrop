@@ -1,45 +1,44 @@
 <div class = "container">
   <div class = "mb-5">
-    <h2 class = "my-4"><span style= "border-bottom: 2px solid; ">ユーザー情報詳細</span></h2>
+    <h2 class = "my-4"><span style= "border-bottom: 3px solid; border-color: orange; ">ユーザーID "<strong><%= @user.id %></strong>" の情報詳細</span></h2>
     <div class = "row">
-      <table>
+      <table class= "table table-bordered border-black">
         <tr>
-          <th>ユーザーID</th>
+          <th class="bg-info-subtle">ユーザーID</th>
           <td><%= @user.id %></td>
         </tr>
         <tr>
-          <th>ユーザーネーム</th>
+          <th class="bg-info-subtle">ユーザーネーム</th>
           <td><%= @user.name %></td>
         </tr>
         <tr>
-          <th>画像</th>
-          <td><%= image_tag @user.get_profile_image(100,100) %></td>
+          <th class="bg-info-subtle">画像</th>
+          <td><%= image_tag @user.get_profile_image(100,100), class: "border border-dark" %></td>
         </tr>
         <tr>
-          <th>登録メールアドレス</th>
+          <th  class="bg-info-subtle">登録メールアドレス</th>
           <td><%= @user.email %></td>
         </tr>
         <tr>
-         <th>ステータス</th>
-         <td>
-          <% if @user.is_active %>
-            <span class="text-success fw-bold"><%= t("enums.user.is_active.#{@user.is_active}") %></span>
-          <% else %>
-            <span class="text-danger fw-bold"><%= t("enums.user.is_active.false") %></span>
-          <% end %>
-         </td>
-         <td>
-           <%= form_with model: @user, url:admin_user_path(@user), method: :patch do |f| %>
-             <%= f.radio_button :is_active, :false %>
-             <%= f.label :is_active_false, "無効にする", class: "text-danger fw-bold" %>
-             <%= f.radio_button :is_active, :true %>
-             <%= f.label :is_active_ture, "有効にする", class: "text-success fw-bold"%>
-             <%= f.submit "ステータス確定", data: { confirm: "ステータスを変更してよろしいですか？" },class: "btn btn-success" %>
-           <% end %>
+         <th class="bg-info-subtle">ステータス</th>
+         <td colspan = "2">
+            <% if @user.is_active %>
+              <span class="text-success fw-bold"><%= t("enums.user.is_active.#{@user.is_active}") %></span>
+            <% else %>
+              <span class="text-danger fw-bold"><%= t("enums.user.is_active.false") %></span>
+            <% end %>
+            <br /><br />
+            <%= form_with model: @user, url:admin_user_path(@user), method: :patch do |f| %>
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active_false, "無効にする", class: "text-danger fw-bold" %>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active_true, "有効にする", class: "text-success fw-bold"%>
+              <span class= "ms-4"><%= f.submit "ステータス確定", data: { confirm: "ステータスを変更してよろしいですか？" },class: "btn btn-success" %><div>
+            <% end %>
          </td>
         </tr>
         <tr>
-          <th>紹介文</th>
+          <th class="bg-info-subtle">紹介文</th>
           <td>
             <% if @user.introduction.present?%>
              <%= @user.introduction %>
@@ -52,40 +51,45 @@
     </div>
   </div>
 
-  <h2> <span style= "border-bottom: 2px solid; ">ユーザー投稿一覧</span></h2>
-  <div style="max-height: 400px; overflow-y: auto;">
-    <table class = "table table-bordered">
-      <thead>
-        <tr>
-          <th>投稿ID</th>
-          <th>タイトル</th>
-          <th>画像</th>
-          <th>本文</th>
-          <th>作成日</th>
-          <th>更新日</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <% @posts.each do |post| %>
-      <tbody>
-        <tr style = "height: 100px;">
-          <td><%= post.id %></td>
-          <td><%= post.title %></td>
-          <td>
-            <% if post.image.attached? %>
-              <%= image_tag post.image, size:"100x100" %>
-            <% end %>
-          </td>
-          <td><%= post.body %></td>
-          <td><%= post.created_at.strftime("%Y%m%d") %></td>
-          <td><%= post.updated_at.strftime("%Y%m%d") %></td>
-          <td><%= link_to "削除",admin_post_path(post), method: :delete,data: { confirm: "削除してよろしいですか？ "}, class: "btn btn-danger" ,style: "white-space: nowrap;" %></td>
-        </tr>
-      </tbody>
-      <% end %>
-    </table>
-  </div>
+  <h2 class= "mb-3"> <span style= "border-bottom: 3px solid; border-color: orange; ">ユーザー投稿一覧</span></h2>
+  <% if @posts.present? %>
+    <div style="max-height: 400px; overflow-y: auto;">
+      <table class = "table table-bordered border-black">
+        <thead>
+          <tr>
+            <th class="bg-info-subtle">投稿ID</th>
+            <th class="bg-info-subtle">タイトル</th>
+            <th class="bg-info-subtle">画像</th>
+            <th class="bg-info-subtle">本文</th>
+            <th class="bg-info-subtle">作成日</th>
+            <th class="bg-info-subtle">更新日</th>
+            <th class="bg-info-subtle"></th>
+            <th class="bg-info-subtle"></th>
+          </tr>
+        </thead>
+        <% @posts.each do |post| %>
+        <tbody>
+          <tr style = "height: 100px;">
+            <td><%= post.id %></td>
+            <td><%= post.title %></td>
+            <td>
+              <% if post.image.attached? %>
+                <%= image_tag post.image, size:"100x100" %>
+              <% end %>
+            </td>
+            <td><div class= "table-text-truncate"><%= post.body %></div></td>
+            <td><%= post.created_at.strftime("%Y%m%d") %></td>
+            <td><%= post.updated_at.strftime("%Y%m%d") %></td>
+            <td><%= link_to "詳細",admin_post_path(post), class: "btn btn-primary" ,style: "white-space: nowrap;" %></td>
+            <td><%= link_to "削除",admin_post_path(post), method: :delete,data: { confirm: "削除してよろしいですか？ "}, class: "btn btn-danger" ,style: "white-space: nowrap;" %></td>
+          </tr>
+        </tbody>
+        <% end %>
+      </table>
+    </div>
+  <% else %>
+    <h5 class= "text-danger"><%= "※データがありません※" %></h5>
+  <% end %>
 </div>
 
 

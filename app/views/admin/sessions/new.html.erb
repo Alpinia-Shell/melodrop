@@ -1,19 +1,27 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class = "row">
+    <div class="col-6 mx-auto mt-5 py-3 shadow rounded-3" >
+      <h2 class= "mb-4 text-center">管理者ログイン</h2>
 
-<%= form_with scope: :admin, url: admin_session_path do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= form_with scope: :admin, url: admin_session_path do |f| %>
+        <div class="mb-4 ">
+           <%= f.label :email ,"メールアドレス" %><br />
+          <div class="input-group">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレスを入力してください",class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="mb-4 ">
+          <%= f.label :password, "パスワード" %><br />
+          <%= f.password_field :password, autocomplete: "current-password",placeholder:"パスワードを入力してください" ,class: "form-control" %>
+        </div>
+
+        <div class="actions text-center my-4">
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <%= render "admin/shared/links" %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
-  </div>
-<% end %>
-
-<%= render "admin/shared/links" %>
+</div>

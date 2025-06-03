@@ -1,6 +1,6 @@
 class Admin::UsersController < Admin::BaseController
   def index
-    @users = User.all
+    @users = User.page(params[:page])
   end
 
   def show
@@ -14,7 +14,7 @@ class Admin::UsersController < Admin::BaseController
       flash[:notice] = "ステータスの変更が完了しました"
     redirect_to admin_user_path(@user)
     else
-      flash[:aleart] = "ステータスの変更に失敗しました"
+      flash now[:aleart] = "ステータスの変更に失敗しました"
       render :show
     end
   end

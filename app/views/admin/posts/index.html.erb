@@ -1,14 +1,14 @@
 <div class = "container">
-  <h2><span style= "border-bottom: 2px solid; ">投稿一覧</span></h2>
-  <table class = "table">
+  <h2 class= "my-3"><span style= "border-bottom: 3px solid; border-color: orange;">投稿一覧</span></h2>
+  <table class = "table border-dark table-hover">
     <thead>
-      <tr>
-        <th style= "white-space: nowrap;">投稿ID</th>
-        <th>画像</th>
-        <th>タイトル</th>
-        <th>本文</th>
-        <th>投稿日</th>
-        <th>更新日</th>
+      <tr class= "border-top border-dark">
+        <th style= "white-space: nowrap;" class= "bg-info-subtle">投稿ID</th>
+        <th class= "bg-info-subtle">画像</th>
+        <th class= "bg-info-subtle">タイトル</th>
+        <th class= "bg-info-subtle">本文</th>
+        <th class= "bg-info-subtle">投稿日</th>
+        <th class= "bg-info-subtle">更新日</th>
       </tr>
     </thead>
     <% @posts.each do |post| %>
@@ -29,6 +29,8 @@
         <td><%= post.created_at.strftime('%Y/%m/%d') %></td>
         <td><%= post.updated_at.strftime('%Y/%m/%d') %></td>
       </tr>
-    <% end%>
+    <% end %>
   </table>
+  <%= paginate @posts %>
+  
 </div>

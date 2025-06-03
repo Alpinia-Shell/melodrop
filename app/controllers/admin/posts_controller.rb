@@ -1,7 +1,7 @@
 class Admin::PostsController < Admin::BaseController
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page])
   end
 
   def show

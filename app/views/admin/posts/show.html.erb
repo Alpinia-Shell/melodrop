@@ -1,28 +1,28 @@
 <div class= "container">
-  <h2><span style= "border-bottom: 2px solid; ">投稿ID "<strong><%= @post.id %></strong>"の詳細</span></h2>
-  <table class= "table">
+  <h2 class= "my-3"><span style= "border-bottom: 3px solid; border-color:orange ">投稿ID "<strong><%= @post.id %></strong>"の詳細</span></h2>
+  <table class= "table table-bordered border-black">
     <tr>
-      <th style= "white-space: nowrap;">投稿ID</th>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">投稿ID</th>
       <td><%= @post.id %></td>
     </tr>
     <tr>
-      <th style= "white-space: nowrap;">投稿者ID</th>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">投稿者ID</th>
       <td><%= link_to @post.user.id, admin_user_path(@post.user) %><span class= "text-danger"> (※投稿削除はこちらから）</span></td>
     </tr>
     <tr>
-      <th style= "white-space: nowrap;">投稿日時</th>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">投稿日時</th>
       <td><%= @post.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
     </tr>
     <tr>
-      <th style= "white-space: nowrap;">更新日時</th>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">更新日時</th>
       <td><%= @post.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
     </tr>
     <tr>
-      <th style= "white-space: nowrap;">タイトル</th>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">タイトル</th>
       <td><%= @post.title %></td>
     </tr>
     <tr>
-      <th style= "white-space: nowrap;">画像</th>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">画像</th>
       <td>
         <% if @post.image.present?%>
           <%= image_tag @post.image, size:"300x300" %>
@@ -32,7 +32,7 @@
       </td>
     </tr>
     <tr>
-      <th style= "white-space: nowrap;">本文</th>
+      <th style= "white-space: nowrap;" class = "bg-info-subtle">本文</th>
       <td><%= simple_format(@post.body) %></td>
     </tr>
   </table>

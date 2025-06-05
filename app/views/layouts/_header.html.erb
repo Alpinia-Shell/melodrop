@@ -19,6 +19,9 @@
              <li class="nav-item border border-3 border-info me-3 p-2 rounded-3">
               <%= link_to "マイページ", user_path(current_user), class:"text-decoration-none" %>
             </li>
+            <li class="d-lg-none nav-item border border-3 border-info me-3 p-2 rounded-3">
+              <%= link_to "雫をつくる", new_post_path, class:"text-decoration-none" %>
+            </li>
             <li class="nav-item border border-3 border-info me-3  p-2 rounded-3">
               <%= link_to "みんなの雫", posts_path, class:"text-decoration-none" %>
             </li>

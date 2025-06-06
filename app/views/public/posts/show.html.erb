@@ -24,6 +24,7 @@
             </div>
           <% end %>
           <%= simple_format(@post.body) %>
+          <p><i class="fa-solid fa-comment" style="color: #5ad3cb;"></i> <%= @post.post_comments.count %></p>
         </div>
 
         <div class="col-12 col-md-2">

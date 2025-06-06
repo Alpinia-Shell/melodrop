@@ -1,62 +1,68 @@
-<div class = "row">
-  <div class="col-2 bg-light sidebar">
+<div class="row">
+  <!-- 左サイドバー（PCのみ表示） -->
+  <div class="col-2 p-0 bg-light sidebar d-none d-md-block">
     <%= render 'public/users/sidebar' %>
   </div>
-  <div class = "col-8 p-0 mt-5 d-flex flex-column">
-    <div class = "row ">
-      <div class = "col-10 d-flex justify-content-start ps-5">
-        <%= image_tag @user.get_profile_image(100,100),class: "rounded-circle border border-black", style: "width: 100px; height: 100px; object-fit: cover;" %>
-        <div class ="flex-column ">
-          <div class = "ms-3 mb-3">なまえ: <%= @user.name %></div>
-          <div class = "ms-3 mb-3">しょうかい: <%= @user.introduction %></div>
-          <div class = "ms-3 mb-3">フォロー：63人 フォロワー:100人</div>
+
+  <!-- メインコンテンツ -->
+  <div class="col-12 col-md-8 p-0 mt-5 d-flex flex-column">
+    <!-- プロフィール部分 -->
+    <div class="row px-3 px-md-5">
+      <div class="col-12 d-flex flex-column flex-md-row align-items-center">
+        <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle border border-black me-md-4 mb-3 mb-md-0", style: "width: 100px; height: 100px; object-fit: cover;" %>
+        <div class="text-start">
+          <div class="mb-2">なまえ: <%= @user.name %></div>
+          <div class="mb-2">しょうかい: <%= @user.introduction %></div>
+          <div class="mb-2">フォロー：63人 フォロワー:100人</div>
         </div>
-      </div>
-      <div class = "col-2">
         <% if @user == current_user %>
-          <div>
-            <%= link_to edit_user_path(@user) ,class: "btn btn-outline-secondary block" do %>
+          <div class="ms-md-auto mt-3 mt-md-0">
+            <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>
               <i class="fa-solid fa-gear"></i>
             <% end %>
           </div>
         <% end %>
       </div>
     </div>
-    
-    <div class = "d-flex justify-content-around w-100 text-center mt-4">
-      <div class = "border-bottom">投稿</div> 
-      <div class = "border-bottom">いいね</div> 
-      <div class = "border-bottom">下書き</div> 
-      <div class = "border-bottom">DM</div>
+
+    <!-- メニュー -->
+    <div class="d-flex justify-content-around w-100 text-center mt-4 flex-wrap">
+      <div class="border-bottom px-2">投稿</div>
+      <div class="border-bottom px-2">いいね</div>
+      <div class="border-bottom px-2">下書き</div>
+      <div class="border-bottom px-2">DM</div>
     </div>
 
+    <!-- 投稿一覧 -->
     <% @posts.each do |post| %>
-      <%= link_to post_path(post), style: "width: 100%;" ,class: "text-decoration-none b-block text-dark" do %>
+      <%= link_to post_path(post), style: "width: 100%;" ,class: "text-decoration-none d-block text-dark" do %>
         <div class="w-100 border-bottom p-4">
           <div class="row">
-            <div class="col-2 text-center">
-              <%= image_tag post.user.get_profile_image(100,100), class: "rounded-circle border border-black" %>
-              <div class="mt-3"><%= post.user.name %></div>
+            <div class="col-12 col-md-2 text-center mb-3 mb-md-0">
+              <%= image_tag post.user.get_profile_image(100,100), class: "rounded-circle border border-black", style: "width: 80px; height: 80px; object-fit: cover;" %>
+              <div class="mt-2"><%= post.user.name %></div>
             </div>
-            <div class="col-8 d-flex flex-column text-center justify-content-center">
-              <h4 class="py-3 fw-bold"><%= post.title %></h4>
+            <div class="col-12 col-md-8 d-flex flex-column align-items-center">
+              <h4 class="py-2 fw-bold text-center"><%= post.title %></h4>
               <% if post.image.attached? %>
                 <div class="mx-auto mb-3 d-flex align-items-center justify-content-center rounded"
-                      style="width:300px; height:300px; background-color:#f0f0f0;">
+                     style="width:100%; max-width:300px; height:300px; background-color:#f0f0f0;">
                   <%= image_tag post.image, style: "max-height:100%; max-width:100%; object-fit:contain;" %>
                 </div>
               <% end %>
-              <div class="text-truncate-multiline mx-auto"><%= post.body %></div>
+              <div class="text-truncate-multiline text-center px-2"><%= post.body %></div>
             </div>
-            <div class="col-2 p-0 text-start">
-              ・タグ<br>・タグ
+            <div class="col-12 col-md-2 text-start mt-3 mt-md-0">
+              <small class="text-muted">・タグ<br>・タグ</small>
             </div>
           </div>
         </div>
       <% end %>
     <% end %>
   </div>
-  <div class="col-2 p-0 bg-light sidebar">
+
+  <!-- 右サイドバー（PCのみ表示） -->
+  <div class="col-2 p-0 bg-light sidebar d-none d-md-block">
     <%= render 'public/posts/sidebarleft' %>
   </div>
 </div>

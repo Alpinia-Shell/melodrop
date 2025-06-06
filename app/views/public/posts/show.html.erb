@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row min-vh-100 align-items-stretch">
   <%# 左サイドバー %>
   <div class="col-2 p-0 d-none d-md-block">
     <%= render 'public/users/sidebar' %>
@@ -10,7 +10,7 @@
     <div class="overflow-auto w-100 py-5" style="max-height: 600px;">
       <div class="row w-100 border-bottom">
         <div class="col-12 col-md-2 text-center">
-          <%= link_to user_path(@post.user) do %>
+          <%= link_to user_path(@post.user), class: "text-decoration-none text-dark" do %>
             <%= image_tag @post.user.get_profile_image(100, 100), class: "rounded-circle border border-black" %>
             <div class="mt-3"><%= @post.user.name %></div>
           <% end %>
@@ -47,25 +47,24 @@
           </div>
           <div class="col-2 d-flex align-items-center justify-content-center">
             <% if post_comment.user == current_user %>
-              <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, class: "btn btn-outline-danger" do %>
+              <%= link_to post_post_comment_path(post_comment.post, post_comment), method: :delete, data:{confirm: "コメントを削除しますか？"} ,class: "btn btn-outline-danger" do %>
                 <i class="fa-solid fa-trash" style="color: #c32c34;"></i>
               <% end %>
             <% end %>
           </div>
         </div>
       <% end %>
-    </div>
-
-    <%# コメント投稿フォーム（中央寄せ＆横幅75%） %>
-    <div class="w-100 mt-5 d-flex justify-content-center">
-      <%= form_with model: [@post, @post_comment], html: { class: "w-75" } do |f| %>
-        <%= f.text_area :comment, rows: 5, placeholder: "コメントをここに書いてね", class: "form-control" %>
-        <div class="text-end mt-3">
-          <%= button_tag type: "submit", class: "btn btn-outline-primary mb-2" do %>
-            そうしん<i class="fa-regular fa-paper-plane ms-1" style="color: #74C0FC;"></i>
-          <% end %>
-        </div>
-      <% end %>
+        <%# コメント投稿フォーム（中央寄せ＆横幅75%） %>
+      <div class="w-100 mt-5 d-flex justify-content-center">
+        <%= form_with model: [@post, @post_comment], html: { class: "w-75" } do |f| %>
+          <%= f.text_area :comment, rows: 5, placeholder: "コメントをここに書いてね", class: "form-control" %>
+          <div class="text-end mt-3">
+            <%= button_tag type: "submit", class: "btn btn-outline-primary mb-2" do %>
+              そうしん<i class="fa-regular fa-paper-plane ms-1" style="color: #74C0FC;"></i>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
     </div>
   </div>
 

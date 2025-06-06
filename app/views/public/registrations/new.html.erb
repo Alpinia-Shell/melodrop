@@ -1,6 +1,6 @@
 <div class="container">
   <div class = "row">
-    <div class="col-6 mx-auto mt-5 py-3 px-3 shadow rounded-3">
+    <div class="col-12 col-6 mx-auto mt-5 py-3 px-3 shadow rounded-3">
       <%= render "public/shared/error_messages", resource: @user %>
       <h3 class= "mb-4 text-center">アメフラシになろう</h3>
       <%= form_with model: @user, url: user_registration_path, local: true do |f| %>

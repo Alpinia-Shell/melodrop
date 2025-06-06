@@ -9,7 +9,7 @@
           <td><%= @user.id %></td>
         </tr>
         <tr>
-          <th class="bg-info-subtle">ユーザーネーム</th>
+          <th class="bg-info-subtle" style="white-space: nowrap;">ユーザーネーム</th>
           <td><%= @user.name %></td>
         </tr>
         <tr>
@@ -17,7 +17,7 @@
           <td><%= image_tag @user.get_profile_image(100,100), class: "border border-dark" %></td>
         </tr>
         <tr>
-          <th  class="bg-info-subtle">登録メールアドレス</th>
+          <th  class="bg-info-subtle" style="white-space: nowrap;">登録メールアドレス</th>
           <td><%= @user.email %></td>
         </tr>
         <tr>
@@ -59,8 +59,8 @@
       <table class = "table table-bordered border-black mb-5">
         <thead>
           <tr>
-            <th class="bg-info-subtle">投稿ID</th>
-            <th class="bg-info-subtle">タイトル</th>
+            <th class="bg-info-subtle" style="white-space: nowrap;">投稿ID</th>
+            <th class="bg-info-subtle" style="white-space: nowrap;">タイトル</th>
             <th class="bg-info-subtle">画像</th>
             <th class="bg-info-subtle">本文</th>
             <th class="bg-info-subtle">作成日</th>
@@ -99,9 +99,9 @@
     <div style="max-height: 400px; overflow-y: auto;">
       <table class= "table table-bordered border-black">
         <tr>
-          <th class="bg-info-subtle">コメントID</th>
-          <th class="bg-info-subtle">投稿ID</th>
-          <th class="bg-info-subtle">コメント内容</th> 
+          <th class="bg-info-subtle" style="white-space: nowrap;">コメントID</th>
+          <th class="bg-info-subtle" style="white-space: nowrap;">投稿ID</th>
+          <th class="bg-info-subtle" style="white-space: nowrap;">コメント内容</th> 
           <th class="bg-info-subtle"></th>
           <th class="bg-info-subtle"></th>
         </tr>
@@ -110,8 +110,8 @@
             <td><%= comment.id %></td>
             <td><%= comment.post.id %></td>
             <td><div class= "table-text-truncate"><%= comment.comment %></div></td>
-            <td><%= link_to "詳細",admin_post_comment_path(comment),class: "btn btn-primary" %></td>
-            <td><%= link_to "削除",admin_post_comment_path(comment),method: :delete,data:{confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
+            <td style="white-space: nowrap;"><%= link_to "詳細",admin_post_comment_path(comment),class: "btn btn-primary" %></td>
+            <td style="white-space: nowrap;"><%= link_to "削除",admin_post_comment_path(comment),method: :delete,data:{confirm: "本当に削除しますか？"}, class: "btn btn-danger" %></td>
           </tr>
         <% end %>
       </table>

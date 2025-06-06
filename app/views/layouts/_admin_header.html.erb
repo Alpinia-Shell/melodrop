@@ -1,8 +1,8 @@
 <header>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary border-bottom border-info">
     <div class="container-fluid">
-      <%= link_to admin_users_path do %>
-        <%= image_tag "melodrop.png", alt: "MeloDrop", width: 350, height: 100  %>
+      <%= link_to admin_users_path, class: "logo-link" do %>
+        <%= image_tag "melodrop.png", alt: "MeloDrop",style: "width: 70%; height:auto;"  %>
       <% end %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -28,11 +28,6 @@
             </li>
           <% end %>
         </ul>
-        <%# 検索フォーム後で追加 %>
-        <form class="d-flex d-lg-none" role="search">
-          <input class="form-control me-2" type="search" name="query" id="searchInput" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
       </div>
     </div>
   </nav>

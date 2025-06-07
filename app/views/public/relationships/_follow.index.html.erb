@@ -11,7 +11,7 @@
     <% users.each do |user| %>
       <tr>
         <td class= "align-middle"><%= user.name%></td>
-        <td class= "align-middle"><%= image_tag user.get_profile_image(90,90),class: "rounded-circle" %></td>
+        <td class= "align-middle"><%= image_tag user.get_profile_image(90,90),class: "rounded-circle border border-black" %></td>
         <td class= "align-middle"><%= user.introduction %></td>
         <td class= "align-middle">
           <% if current_user.following?(user) && user.following?(current_user) %>

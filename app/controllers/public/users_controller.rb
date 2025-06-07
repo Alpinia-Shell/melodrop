@@ -21,6 +21,26 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @posts = @user.posts
     @favorited_posts = @user.favorited_posts.includes(:user, :favorites, :post_comments)
+
+    @currentUserEntry = Entry.where(user_id: current_user.id)
+    @userEntry = Entry.where(user_id: @user.id)
+    if @user.id == current_user.id
+    else
+      @currentUserEntry.each do |cu|
+        @userEntry.each do |u|
+          if cu.room_id == u.room_id
+            @isRoom = Room.find_by(id: cu.room_id)
+            break
+            @roomId = cu.room_id
+          end
+        end
+      end
+    end
+    if @isRoom
+    else
+      @room = Room.new
+      @entry = Entry.new
+    end
   end
 
   def destroy_confirm

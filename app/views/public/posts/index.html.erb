@@ -16,7 +16,7 @@
                 <%= image_tag post.user.get_profile_image(100,100), class: "rounded-circle border border-black" %>
                 <div class="mt-3"><%= post.user.name %></div>
 
-                <p class= "mt-3"><i class="fa-solid fa-comment" style="color: #5ad3cb;"></i> <%= post.post_comments.count %></p>
+                <p class= "mt-5"><i class="fa-solid fa-comment" style="color: #5ad3cb;"></i> <%= post.post_comments.count %></p>
                 <p class= "mt-3"><i class="fa-solid fa-bottle-droplet" style="color: #74C0FC;"></i> <%= post.favorites.count %></p>
               </div>
 

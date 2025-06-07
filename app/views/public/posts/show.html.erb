@@ -1,4 +1,4 @@
-<div class="row min-vh-100 align-items-stretch">
+<div class="row min-vh-100">
   <%# 左サイドバー %>
   <div class="col-2 p-0 d-none d-md-block">
     <%= render 'public/users/sidebar' %>
@@ -24,7 +24,23 @@
             </div>
           <% end %>
           <%= simple_format(@post.body) %>
-          <p><i class="fa-solid fa-comment" style="color: #5ad3cb;"></i> <%= @post.post_comments.count %></p>
+          <div class= "d-flex justify-content-around">
+            <p><i class="fa-solid fa-comment" style="color: #5ad3cb;"></i> <%= @post.post_comments.count %></p>
+            
+            <% if @post.favorited_by?(current_user) %>
+              <p>
+                <%= link_to post_favorites_path(@post), class: "text-decoration-none text-dark", method: :delete do %>
+                  <i class="fa-solid fa-bottle-droplet" style="color: #74C0FC;"></i> <%= @post.favorites.count %> カケラ
+                <% end %>
+              </p>
+                <% else %>
+              <p>
+                <%= link_to post_favorites_path(@post), class: "text-decoration-none text-dark", method: :post do %>
+                  <i class="fa-solid fa-droplet" style="color: #74C0FC;"></i> <%= @post.favorites.count %> カケラ
+                <% end %>
+              </p> 
+            <% end %>
+          </div>
         </div>
 
         <div class="col-12 col-md-2">

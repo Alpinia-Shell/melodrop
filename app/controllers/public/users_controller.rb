@@ -20,6 +20,7 @@ class Public::UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @posts = @user.posts
+    @favorited_posts = @user.favorited_posts.includes(:user, :favorites, :post_comments)
   end
 
   def destroy_confirm

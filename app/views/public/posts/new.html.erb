@@ -18,7 +18,7 @@
 
         <div class="mb-3">
           <%= f.label :body, "本文: "%>
-          <%= f.text_area :body, placeholder: "200字以内で入力してください",class:"form-control" %>
+          <%= f.text_area :body, rows: "10", placeholder: "2200字以内で入力してください",class:"form-control" %>
         </div>
 
         <%= f.submit '投稿する',class: "btn btn-outline-success rounded-pill" %>

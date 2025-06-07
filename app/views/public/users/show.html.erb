@@ -14,6 +14,13 @@
           <div class="mb-2">なまえ: <%= @user.name %></div>
           <div class="mb-2">しょうかい: <%= @user.introduction %></div>
           <div class="mb-2">フォロー：63人 フォロワー:100人</div>
+          <% if current_user != @user %>
+            <% if current_user.following?(@user) %>
+              <%= link_to "フォロー外す", user_relationships_path(@user), method: :delete, class: "btn btn-outline-primary rounded-pill" %>
+            <% else %>
+              <%= link_to "フォローする", user_relationships_path(@user), method: :post, class: "btn btn-outline-info rounded-pill" %>
+            <% end %>
+          <% end %>
         </div>
         <% if @user == current_user %>
           <div class="ms-md-auto mt-3 mt-md-0">

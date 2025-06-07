@@ -10,11 +10,35 @@
     <div class="row px-3 px-md-5">
       <div class="col-12 d-flex flex-column flex-md-row align-items-center">
         <%= image_tag @user.get_profile_image(100,100), class: "rounded-circle border border-black me-md-4 mb-3 mb-md-0", style: "width: 100px; height: 100px; object-fit: cover;" %>
-        <div class="text-start">
+        <div class= "d-flex flex-column">
           <div class="mb-2">なまえ: <%= @user.name %></div>
           <div class="mb-2">しょうかい: <%= @user.introduction %></div>
-          <div class="mb-2">フォロー：63人 フォロワー:100人</div>
+
+          <div class= "d-flex mt-3 align-items-center">
+            <div class= "me-5">
+              <%= link_to followings_path(@user),class: "text-decoration-none text-dark" do %>
+                フォロー：<%= @user.followings.count %>人 
+              <% end %>
+            </div>
+
+            <div class="ms-5">
+              <%= link_to followers_path(@user),class: "text-decoration-none text-dark" do %>
+                フォロワー:<%= @user.followers.count %>人
+              <% end %>
+            </div>
+          </div>
         </div>
+
+        <% if current_user != @user %>
+          <div class="ms-md-auto mt-3 mt-md-0">
+            <% if current_user.following?(@user) %>
+              <%= link_to "ツナガラナイ", user_relationships_path(@user), method: :delete, class: "btn btn-outline-primary rounded-pill" %>
+            <% else %>
+              <%= link_to "ツナガル", user_relationships_path(@user), method: :post, class: "btn btn-outline-info rounded-pill" %>
+            <% end %>
+          </div>
+        <% end %>
+        
         <% if @user == current_user %>
           <div class="ms-md-auto mt-3 mt-md-0">
             <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>

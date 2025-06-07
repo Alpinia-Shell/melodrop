@@ -1,0 +1,23 @@
+<div class="row d-flex">
+  <!-- 左サイドバー（PCのみ表示） -->
+  <div class="col-2 p-0 bg-light sidebar d-none d-md-block">
+    <%= render 'public/users/sidebar' %>
+  </div>
+
+  <div class= "col-12 col-md-8" >
+    <h3 class= "mt-4">
+      <span class= "border-bottom border-info">
+        あなたを見守るアメフラシ
+      </span>
+    </h3>
+    <% if @users.present? %>
+      <%= render 'public/relationships/follow.index', users: @users %>
+    <% else %>
+      <h5 class= "text-center mt-5 text-secondary">あなたを見守るアメフラシはまだいないようです<h5>
+    <% end %>
+  </div>
+  <!-- 右サイドバー（PCのみ表示） -->
+  <div class="col-2 p-0 bg-light sidebar d-none d-md-block">
+    <%= render 'public/posts/sidebarleft' %>
+  </div>
+</div>

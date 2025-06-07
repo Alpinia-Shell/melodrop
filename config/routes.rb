@@ -28,8 +28,8 @@ Rails.application.routes.draw do
     resources :users, only:[:edit, :show, :update, :destroy] do
       resource :relationships, only:[:create, :destroy]
     end
-    get '/users/:user_id/following' => 'relationships#following'
-    get '/users/:user_id/followers' => 'relationships#followers'
+    get '/users/:user_id/followings' => 'relationships#followings', as: "followings"
+    get '/users/:user_id/followers' => 'relationships#followers', as: "followers"
 
     resources :rooms, only:[:create, :index, :show] do
       resources :messages, only:[:create]

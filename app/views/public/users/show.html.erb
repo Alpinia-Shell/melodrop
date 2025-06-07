@@ -37,6 +37,22 @@
               <%= link_to "ツナガル", user_relationships_path(@user), method: :post, class: "btn btn-outline-info rounded-pill" %>
             <% end %>
           </div>
+          <% if current_user.following?(@user) && @user.following?(current_user) %>
+            <% if @isRoom.present? %>
+              <%= link_to room_path(@isRoom), class: "btn btn-outline-primary ms-4" do %>
+                <i class="fa-solid fa-envelope" style="color: #74C0FC;"></i>
+              <% end %>
+            <% else %>
+            <%= form_with model: @room do |f| %>
+              <%= fields_for @entry do |e| %>
+                <%= e.hidden_field :user_id, value: @user.id %>
+                  <%= button_tag type: "submit", class: "btn btn-outline-primary ms-4" do %>
+                    <i class="fa-regular fa-envelope" style="color: #74C0FC;"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+          <% end %>
         <% end %>
         
         <% if @user == current_user %>

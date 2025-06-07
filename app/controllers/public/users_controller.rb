@@ -31,13 +31,12 @@ class Public::UsersController < ApplicationController
           if cu.room_id == u.room_id
             @isRoom = Room.find_by(id: cu.room_id)
             break
-            @roomId = cu.room_id
           end
         end
+        break if @isRoom
       end
     end
-    if @isRoom
-    else
+    unless @isRoom
       @room = Room.new
       @entry = Entry.new
     end

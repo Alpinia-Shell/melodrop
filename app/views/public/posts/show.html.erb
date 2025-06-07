@@ -26,17 +26,16 @@
           <%= simple_format(@post.body) %>
           <div class= "d-flex justify-content-around">
             <p><i class="fa-solid fa-comment" style="color: #5ad3cb;"></i> <%= @post.post_comments.count %></p>
-            
             <% if @post.favorited_by?(current_user) %>
               <p>
                 <%= link_to post_favorites_path(@post), class: "text-decoration-none text-dark", method: :delete do %>
-                  <i class="fa-solid fa-bottle-droplet" style="color: #74C0FC;"></i> <%= @post.favorites.count %> カケラ
+                  <i class="fa-solid fa-bottle-droplet" style="color: #74C0FC;"></i> <%= @post.favorites.count %>
                 <% end %>
               </p>
                 <% else %>
               <p>
                 <%= link_to post_favorites_path(@post), class: "text-decoration-none text-dark", method: :post do %>
-                  <i class="fa-solid fa-droplet" style="color: #74C0FC;"></i> <%= @post.favorites.count %> カケラ
+                  <i class="fa-solid fa-droplet" style="color: #74C0FC;"></i> <%= @post.favorites.count %>
                 <% end %>
               </p> 
             <% end %>

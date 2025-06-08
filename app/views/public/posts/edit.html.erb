@@ -21,26 +21,31 @@
         <%= f.label :body, "本文" %>
         <%= f.text_area :body ,rows: "10",class:"form-control"%>
       </div>
-            
-      <p>ステータス：
-        <% if @post.is_visible %>
-          <span class="text-success fw-bold"><%= t("enums.post.is_visible.#{@post.is_visible}") %></span>
-        <% else %>
-          <span class="text-danger fw-bold"><%= t("enums.post.is_visible.false") %></span>
-        <% end %>
-      </p>
 
-      <%= f.radio_button :is_visible, :false %>
-      <%= f.label :is_visible_false, "非公開", class: "text-secondary fw-bold" %>
-      <%= f.radio_button :is_visible, :true %>
-      <%= f.label :is_visible_true, "公開",class: "text-success fw-bold" %>
+      <div class = "d-flex align-items-center"> 
+        ステータス：
+          <% if @post.is_visible %>
+            <span class="text-success fw-bold"><%= t("enums.post.is_visible.#{@post.is_visible}") %></span>
+          <% else %>
+            <span class="text-danger fw-bold"><%= t("enums.post.is_visible.false") %></span>
+          <% end %>
+        <div class= "ms-5">
+          <%= f.radio_button :is_visible, :false %>
+          <%= f.label :is_visible_false, "非公開", class: "text-secondary fw-bold" %>
+        </div>
+        <div class= "ms-4">
+          <%= f.radio_button :is_visible, :true %>
+          <%= f.label :is_visible_true, "公開",class: "text-success fw-bold" %>
+        </div>
+      </div>
+
       <div class = "mt-4 d-flex justify-content-between">
         <div>
           <%= link_to "戻る", post_path(@post) ,class: " btn btn-outline-primary rounded-pill"%>
         </div>
         <div>
           <%= f.submit '保存' ,class: " text-end btn btn-outline-success rounded-pill" %>
-          <%= link_to "削除", post_path(@post), method: :delete,class: "btn btn-outline-danger rounded-pill", data: {confirm: "本当に削除するの？(´・ω・`)"} %>
+          <%= link_to '削除', post_path(@post), method: :delete,class: "btn btn-outline-danger rounded-pill", data: {confirm: "本当に削除するの？(´・ω・`)"} %>
         </div>
       </div>
     <% end %>

@@ -3,16 +3,16 @@ ja:
     attributes:
       user:
         is_active: "ステータス"
+      post:
+        is_visible: "ステータス"
+        title: "タイトル"
+        body: "本文"
+
   enums:
     user:
       is_active:
         true: "有効"
         false: "無効"
-  activerecord:
-    attributes:
-      post:
-        is_visible: "ステータス"
-  enums:
     post:
       is_visible:
         true: "公開中"

@@ -19,9 +19,9 @@ class Public::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts_true = @user.posts.where(is_visible: true)
-    @posts_false = @user.posts.where(is_visible: false)
-    @favorited_posts = @user.favorited_posts.includes(:user, :favorites, :post_comments)
+    @posts_true = @user.posts.where(is_visible: true).order(created_at: :desc)
+    @posts_false = @user.posts.where(is_visible: false).order(created_at: :desc)
+    @favorited_posts = @user.favorited_posts.where(is_visible: true).includes(:user, :favorites, :post_comments).order(created_at: :desc)
 
     @currentUserEntry = Entry.where(user_id: current_user.id)
     @userEntry = Entry.where(user_id: @user.id)

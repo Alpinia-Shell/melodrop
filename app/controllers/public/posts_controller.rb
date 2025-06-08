@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(is_visible: true)
+    @posts = Post.where(is_visible: true).order(created_at: :desc)
   end
 
   def show 
@@ -66,7 +66,7 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path 
     end
   end
-  
+
   private
   def post_params
     params.require(:post).permit(:title, :body, :image, :is_visible)

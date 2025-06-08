@@ -15,11 +15,11 @@ class Public::RelationshipsController < ApplicationController
 
   def followings
     user = User.find(params[:user_id])
-    @users = user.followings
+    @users = user.followings.where(is_active: :ture).order(created_at: :desc)
   end
 
   def followers
     user = User.find(params[:user_id])
-    @users = user.followers
+    @users = user.followers.where(is_active: :ture).order(created_at: :desc)
   end
 end

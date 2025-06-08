@@ -3,7 +3,7 @@
     <%= render 'public/users/sidebar' %>
   </div>
   <div class = "col-12 col-md-8 px-3 mt-5">
-    <h3 class = "mb-4">何を知らせよう？</h3>
+    <h3 class = "mb-4">何を知らせる？</h3>
       <%= render 'layouts/errors', user: @post %>
       <%= form_with model:@post do |f| %>
         <div class="mb-3">
@@ -21,7 +21,15 @@
           <%= f.text_area :body, rows: "10", placeholder: "2200字以内で入力してください",class:"form-control" %>
         </div>
 
-        <%= f.submit '投稿する',class: "btn btn-outline-success rounded-pill" %>
+        <div class= "mb-3">
+          ステータス：
+          <%= f.radio_button :is_visible, :false %>
+          <%= f.label :is_visible_false, "非公開", class: "text-secondary fw-bold" %>
+          <%= f.radio_button :is_visible, :true %>
+          <%= f.label :is_visible_true, "公開",class: "text-success fw-bold" %>
+        </div>
+        
+        <%= f.submit 'おとす',class: "btn btn-outline-success rounded-pill" %>
       <% end %>
     </div>
 

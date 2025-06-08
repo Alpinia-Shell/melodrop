@@ -52,11 +52,6 @@ class Public::PostsController < ApplicationController
       render :edit
     end
   end
-  
-  private
-  def post_params
-    params.require(:post).permit(:title, :body, :image, :is_visible)
-  end
 
   def is_matching_login_user
     post = Post.find(params[:id])
@@ -71,5 +66,9 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path 
     end
   end
-
+  
+  private
+  def post_params
+    params.require(:post).permit(:title, :body, :image, :is_visible)
+  end
 end

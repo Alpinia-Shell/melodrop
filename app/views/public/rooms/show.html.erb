@@ -1,0 +1,60 @@
+<div class="row">
+  <!-- 左サイドバー -->
+  <div class="col-2 p-0 bg-light sidebar d-none d-md-block">
+    <%= render 'public/users/sidebar' %>
+  </div>
+
+  <div class="col-12 col-md-8 px-3 mt-5">
+    <h3 class="text-center"><%= @partner.name %>さんとのお部屋</h3>
+
+    <div class= "overflow-auto" style= "height:600px;">
+      <% if @messages.present? %>
+        <% @messages.each do |m| %>
+          <div class="row g-0 mb-3 align-items-end">
+            <% if @myUserId == m.user.id %>
+              <!-- 自分のメッセージ -->
+              <div class="col-10 text-end">
+                <p>あなた</p>
+                <div class="my-message d-inline-block">
+                  <%= simple_format(m.message) %>
+                  <div class="text-muted small"><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
+                </div>
+              </div>
+              <div class="col-2 text-end">
+                <%= image_tag m.user.get_profile_image(80, 80), class: "border border-black rounded-circle" %>
+              </div>
+            <% else %>
+              <!-- 相手のメッセージ -->
+              <div class="col-2">
+                <%= image_tag m.user.get_profile_image(80, 80), class: "border border-black rounded-circle" %>
+              </div>
+              <div class="col-10">
+                <p><%= m.user.name %></p>
+                <div class="partner-message d-inline-block">
+                  <%= simple_format(m.message) %>
+                  <div class="text-muted small"><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    
+
+      <%= form_with model: [@room, @message], class: "mt-4" do |f| %>
+        <%= f.text_area :message, placeholder: "メッセージを入力してね", rows: 4, class: "form-control" %>
+        <%= f.hidden_field :room_id, value: @room.id %>
+        <div class="mt-2 text-end">
+          <%= f.button type: "submit", class: "btn btn-outline-primary" do %>
+            <i class="fa-regular fa-paper-plane" style="color: #74C0FC;"></i>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- 右サイドバー -->
+  <div class="col-2 p-0 d-none d-md-block">
+    <%= render 'public/posts/sidebarleft' %>
+  </div>
+</div>

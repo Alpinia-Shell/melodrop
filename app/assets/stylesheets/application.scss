@@ -76,4 +76,47 @@ input[type="password"] {
   max-width: 70%;
 }
 
+.my-message {
+  background-color: #C2EEFF;
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 70%;
+  word-break: break-word;
+  position: relative;
+  margin-left: auto;
+}
+
+.my-message::after {
+  content: "";
+  position: absolute;
+  right: -10px;
+  width: 0;
+  height: 0;
+  top: 10px;
+  border-top: 10px solid transparent;
+  border-left: 10px solid #C2EEFF;
+}
+
+.partner-message {
+  background-color: aquamarine;
+  padding: 10px 15px;
+  border-radius: 15px;
+  max-width: 70%;
+  word-break: break-word;
+  position: relative;
+  margin-right: auto;
+}
+
+.partner-message::after {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10px;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-right: 10px solid aquamarine;
+}
+
+
 

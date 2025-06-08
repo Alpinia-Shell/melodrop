@@ -13,8 +13,8 @@ class Public::RoomsController < ApplicationController
     if Entry.where(:user_id => current_user.id, :room_id => @room.id).present?
       @messages = @room.messages
       @message = Message.new
-      @entries = @room.entries
-      @maUserId = current_user.id
+      @myUserId = current_user.id
+      @partner = @room.entries.find { |e| e.user_id != current_user.id }&.user
     else
       redirect_back(fallback_location: root_path)
     end

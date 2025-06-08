@@ -74,10 +74,13 @@
 
     <!-- 投稿一覧 -->
     <div class= "mt-3">
-      <%= render 'public/posts/index.posts', posts: @posts %>
+      <%= render 'public/posts/index.posts', posts: @posts_true %>
     </div>
       <%# いいねした投稿一覧 %>
       <%= render 'public/posts/index.posts', posts: @favorited_posts %>
+
+      <%# 非公開（下書き）一覧 %>
+      <%= render 'public/posts/index.posts', posts: @posts_false %>
   </div>
 
   <!-- 右サイドバー（PCのみ表示） -->

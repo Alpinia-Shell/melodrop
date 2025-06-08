@@ -20,7 +20,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.where(is_visible: true)
   end
 
   def show 
@@ -35,9 +35,10 @@ class Public::PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      flash[:notice] = "編集が完了しました(o^―^o)"
+      flash[:notice] = "編集が完了しました"
       redirect_to posts_path
     else
+      flash now[:aleart] = "編集に失敗しました"
       render :edit
     end
   end
@@ -54,7 +55,7 @@ class Public::PostsController < ApplicationController
   
   private
   def post_params
-    params.require(:post).permit(:title, :body, :image)
+    params.require(:post).permit(:title, :body, :image, :is_visible)
   end
 
   def is_matching_login_user
@@ -66,7 +67,7 @@ class Public::PostsController < ApplicationController
 
   def reject_guest_user
     if current_user.guest?
-      flash[:alert] = "ゲストユーザーはこの操作を行えません"
+      flash[:alert] = "ゲストさんはこの操作を行えません"
       redirect_to posts_path 
     end
   end

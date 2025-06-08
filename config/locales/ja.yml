@@ -8,3 +8,12 @@ ja:
       is_active:
         true: "有効"
         false: "無効"
+  activerecord:
+    attributes:
+      post:
+        is_visible: "ステータス"
+  enums:
+    post:
+      is_visible:
+        true: "公開中"
+        false: "非公開"

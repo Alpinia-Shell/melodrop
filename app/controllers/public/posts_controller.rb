@@ -20,7 +20,9 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.where(is_visible: true).order(created_at: :desc)
+    @posts = Post.joins(:user)
+    .where(is_visible: true, users: { is_active: true })
+    .order(created_at: :desc)
   end
 
   def show 

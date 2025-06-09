@@ -1,0 +1,13 @@
+<% if post.favorited_by?(current_user) %>
+  <p>
+    <%= link_to post_favorites_path(post), class: "text-decoration-none text-dark", method: :delete, remote: true do %>
+      <i class="fa-solid fa-bottle-droplet" style="color: #74C0FC;"></i> <%= post.favorites.count %>
+    <% end %>
+  </p>
+    <% else %>
+  <p>
+    <%= link_to post_favorites_path(post), class: "text-decoration-none text-dark", method: :post, remote: true do %>
+      <i class="fa-solid fa-droplet" style="color: #74C0FC;"></i> <%= post.favorites.count %>
+    <% end %>
+  </p> 
+<% end %>

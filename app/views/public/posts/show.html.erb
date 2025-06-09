@@ -26,19 +26,9 @@
           <%= simple_format(@post.body) %>
           <div class= "d-flex justify-content-around">
             <p><i class="fa-solid fa-comment" style="color: #5ad3cb;"></i> <%= @post.post_comments.count %></p>
-            <% if @post.favorited_by?(current_user) %>
-              <p>
-                <%= link_to post_favorites_path(@post), class: "text-decoration-none text-dark", method: :delete do %>
-                  <i class="fa-solid fa-bottle-droplet" style="color: #74C0FC;"></i> <%= @post.favorites.count %>
-                <% end %>
-              </p>
-                <% else %>
-              <p>
-                <%= link_to post_favorites_path(@post), class: "text-decoration-none text-dark", method: :post do %>
-                  <i class="fa-solid fa-droplet" style="color: #74C0FC;"></i> <%= @post.favorites.count %>
-                <% end %>
-              </p> 
-            <% end %>
+            <div id="favorite-btn-<%= @post.id %>">
+              <%= render 'public/favorites/favorites.button', post: @post %>
+            </div>
           </div>
         </div>
 
@@ -71,7 +61,7 @@
       <% end %>
         <%# コメント投稿フォーム（中央寄せ＆横幅75%） %>
       <div class="w-100 mt-5 d-flex justify-content-center">
-        <%= form_with model: [@post, @post_comment], html: { class: "w-75" } do |f| %>
+        <%= form_with model: [@post, @post_comment], local: false, html: { class: "w-75" } do |f| %>
           <%= f.text_area :comment, rows: 5, placeholder: "コメントをここに書いてね", class: "form-control" %>
           <div class="text-end mt-3">
             <%= button_tag type: "submit", class: "btn btn-outline-primary mb-2" do %>

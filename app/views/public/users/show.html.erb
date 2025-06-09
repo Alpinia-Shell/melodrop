@@ -77,12 +77,13 @@
           いいね
         </button>
       </li>
-
+    <% if @user == current_user %>
       <li class="nav-item" role="presentation">
         <button class="nav-link" id="drafts-tab" data-bs-toggle="tab" data-bs-target="#drafts" type="button" role="tab">
           下書き
         </button>
       </li>
+    <% end %>
     </ul>
 
     <!-- 投稿一覧 -->
@@ -100,12 +101,14 @@
         </div>
       </div>
 
-      <%# 非公開（下書き）一覧 %>
-      <div class="tab-pane fade" id="drafts" role="tabpanel">
-        <div class= "overflow-auto" style = "max-height: 500px;">
-          <%= render 'public/posts/index.posts', posts: @posts_false %>
-        </div>
-      </div> 
+      <% if @user == current_user %>
+        <%# 非公開（下書き）一覧 %>
+        <div class="tab-pane fade" id="drafts" role="tabpanel">
+          <div class= "overflow-auto" style = "max-height: 500px;">
+            <%= render 'public/posts/index.posts', posts: @posts_false %>
+          </div>
+        </div> 
+      <% end %>
    </div>
   </div>
   <!-- 右サイドバー（PCのみ表示） -->

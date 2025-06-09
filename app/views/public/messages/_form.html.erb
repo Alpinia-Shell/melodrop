@@ -1,0 +1,9 @@
+<%= form_with model: [room, message], local: false, html: { id: "new_message_form", class: "mt-4" } do |f| %>
+  <%= f.text_area :message, placeholder: "メッセージを入力してね", rows: 4, class: "form-control" %>
+  <%= f.hidden_field :room_id, value: room.id %>
+  <div class="mt-2 text-end">
+    <%= f.button type: "submit", class: "btn btn-outline-primary" do %>
+      <i class="fa-regular fa-paper-plane" style="color: #74C0FC;"></i>
+    <% end %>
+  </div>
+<% end %>

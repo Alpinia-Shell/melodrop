@@ -1,0 +1,2 @@
+$("#messages-list").html("<%= j render partial: 'public/messages/messages', locals: { messages: @room.messages, myUserId: current_user.id } %>");
+$("#new_message_form")[0].reset();

@@ -65,24 +65,49 @@
       </div>
     </div>
 
-    <!-- メニュー -->
-    <div class="d-flex justify-content-around w-100 text-center mt-4 flex-wrap">
-      <div class="border-bottom px-2">投稿</div>
-      <div class="border-bottom px-2">いいね</div>
-      <div class="border-bottom px-2">下書き</div>
-    </div>
+    <ul class="nav nav-tabs justify-content-around mt-4" id= "myTab" role= "tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="posts-tab" data-bs-toggle="tab" data-bs-target="#posts" type="button" role="tab">
+          投稿
+        </button>
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="likes-tab" data-bs-toggle="tab" data-bs-target="#likes" type="button" role="tab">
+          いいね
+        </button>
+      </li>
+
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="drafts-tab" data-bs-toggle="tab" data-bs-target="#drafts" type="button" role="tab">
+          下書き
+        </button>
+      </li>
+    </ul>
 
     <!-- 投稿一覧 -->
-    <div class= "mt-3">
-      <%= render 'public/posts/index.posts', posts: @posts_true %>
-    </div>
+    <div class="tab-content mt-3" id="myTabContent">
+      <div class="tab-pane fade show active" id="posts" role="tabpanel">
+        <div class= "overflow-auto" style = "max-height: 500px;">
+          <%= render 'public/posts/index.posts', posts: @posts_true %>
+        </div>
+      </div>
+
       <%# いいねした投稿一覧 %>
-      <%= render 'public/posts/index.posts', posts: @favorited_posts %>
+      <div class="tab-pane fade" id="likes" role="tabpanel">
+        <div class= "overflow-auto" style = "max-height: 500px;">
+          <%= render 'public/posts/index.posts', posts: @favorited_posts %>
+        </div>
+      </div>
 
       <%# 非公開（下書き）一覧 %>
-      <%= render 'public/posts/index.posts', posts: @posts_false %>
+      <div class="tab-pane fade" id="drafts" role="tabpanel">
+        <div class= "overflow-auto" style = "max-height: 500px;">
+          <%= render 'public/posts/index.posts', posts: @posts_false %>
+        </div>
+      </div> 
+   </div>
   </div>
-
   <!-- 右サイドバー（PCのみ表示） -->
   <div class="col-2 p-0 bg-light sidebar d-none d-md-block">
     <%= render 'public/posts/sidebarleft' %>

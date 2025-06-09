@@ -1,0 +1,8 @@
+<%= form_with model: [post, post_comment], local: false, html: { class: "w-75", id: "new_post_comment" } do |f| %>
+  <%= f.text_area :comment, rows: 5, placeholder: "コメントをここに書いてね", class: "form-control" %>
+  <div class="text-end mt-3">
+    <%= button_tag type: "submit", class: "btn btn-outline-primary mb-2" do %>
+      そうしん<i class="fa-regular fa-paper-plane ms-1" style="color: #74C0FC;"></i>
+    <% end %>
+  </div>
+<% end %>

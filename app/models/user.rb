@@ -37,7 +37,7 @@ class User < ApplicationRecord
       file_path = Rails.root.join('app/assets/images/no_image_square.jpg')
       profile_image.attach(io: File.open(file_path), filename: 'no_image_square.jpg', content_type: 'image/jpg')
     end  
-    profile_image.variant(resize_to_limit: [width, height]).processed
+    profile_image.variant(resize_to_fill: [width, height]).processed
   end
 
   def self.guest_sign_in

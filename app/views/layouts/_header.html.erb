@@ -10,33 +10,33 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <% if user_signed_in? %>
-            <li class="nav-item border border-3 border-info me-3 p-2 rounded-3 ">
-              <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"text-decoration-none" %>
+            <li class="nav-item  me-3 p-2">
+              <%= image_tag 'カサのフリーアイコン.png' %> <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "text-decoration-none" %>
             </li>
-            <li class="nav-item border border-3 border-info me-3 p-2 rounded-3">
-              <%= link_to "トップ", root_path, class:"text-decoration-none" %>
+            <li class="nav-item me-3 p-2">
+              <%= image_tag '雨のフリーアイコン.png' %> <%= link_to "トップ", root_path, class:"text-decoration-none" %>
             </li>
-             <li class="nav-item border border-3 border-info me-3 p-2 rounded-3">
-              <%= link_to "マイページ", user_path(current_user), class:"text-decoration-none" %>
+             <li class="nav-item me-3 p-2">
+              <%= image_tag 'ノートのアイコン素材8.png' %> <%= link_to "マイページ", user_path(current_user), class:"text-decoration-none" %>
             </li>
             <li class="d-lg-none nav-item border border-3 border-info me-3 p-2 rounded-3">
-              <%= link_to "雫をつくる", new_post_path, class:"text-decoration-none" %>
+              <%= image_tag '万年筆アイコン4.png' %> <%= link_to "雫をつくる", new_post_path, class:"text-decoration-none" %>
             </li>
-            <li class="nav-item border border-3 border-info me-3  p-2 rounded-3">
-              <%= link_to "みんなの雫", posts_path, class:"text-decoration-none" %>
+            <li class="nav-item  me-3  p-2">
+              <%= image_tag '水滴アイコン4.png' %> <%= link_to "みんなの雫", posts_path, class:"text-decoration-none" %>
             </li>
             <div class = "d-lg-none">
               <%= render 'public/searches/form' %>
             </div>
           <% else %>
-            <li class="nav-item border border-info border-3 me-3  p-2 rounded-3">
-              <%= link_to "とうろく",new_user_registration_path, class:"text-decoration-none" %>
+            <li class="nav-item me-3  p-2 ">
+              <%= image_tag 'EXITアイコン2.png' %> <%= link_to "とうろく",new_user_registration_path, class:"text-decoration-none" %>
             </li>
-            <li class="nav-item border border-info border-3 me-3  p-2 rounded-3">
-              <%= link_to "ログイン",new_user_session_path, class:"text-decoration-none" %>
+            <li class="nav-item  me-3  p-2 ">
+               <%= image_tag 'カサのピクトアイコン5.png' %> <%= link_to "ログイン",new_user_session_path, class:"text-decoration-none" %>
             </li>
-            <li class="nav-item border border-info border-3 me-3  p-2 rounded-3">
-              <%= link_to "おためし", guest_sign_in_path, method: :post, class:"text-decoration-none" %>
+            <li class="nav-item  me-3  p-2 ">
+              <%= image_tag 'EXITのベクター素材1.png' %> <%= link_to "おためし", guest_sign_in_path, method: :post, class:"text-decoration-none" %>
             </li>
           <% end %>
         </ul>

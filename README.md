@@ -38,3 +38,4 @@
 - その他イラスト　ACイラスト
 - 投稿画像　Unsplash
 - ロゴ Canva
+- アイコン　fontawesome, icooon mono

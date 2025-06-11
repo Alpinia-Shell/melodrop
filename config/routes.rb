@@ -10,7 +10,6 @@ Rails.application.routes.draw do
     resources :posts, only:[:index, :show, :destroy]
     resources :post_comments, only:[:index, :show, :destroy]
     get '/search' => 'searches#search'
-    resources :tags, only:[:index, :create, :destroy]
   end
 
   devise_for :users, skip: [:passwords], controllers: {

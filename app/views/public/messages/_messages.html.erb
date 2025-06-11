@@ -3,19 +3,19 @@
     <div class="row g-0 mb-3 align-items-end">
       <% if myUserId == m.user.id %>
         <!-- 自分のメッセージ -->
-        <div class="col-10 text-end">
+        <div class="col-12 col-md-10 text-end">
           <p>あなた</p>
-          <div class="my-message d-inline-block">
+          <div class="my-message d-inline-block text-start">
             <%= simple_format(m.message) %>
             <div class="text-muted small"><%= m.created_at.strftime('%Y/%m/%d %H:%M:%S') %></div>
           </div>
         </div>
-        <div class="col-2 text-end">
+        <div class="col-12 col-md-2 text-end d-none d-md-block">
           <%= image_tag m.user.get_profile_image(80, 80), class: "border border-black rounded-circle" %>
         </div>
       <% else %>
         <!-- 相手のメッセージ -->
-        <div class="col-2">
+        <div class="col-12 col-md-2 d-none d-md-block">
           <%= image_tag m.user.get_profile_image(80, 80), class: "border border-black rounded-circle" %>
         </div>
         <div class="col-10">

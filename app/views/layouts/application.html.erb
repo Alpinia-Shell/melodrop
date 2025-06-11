@@ -12,7 +12,10 @@
   </head>
 
   <body class= "d-flex flex-column vh-100">
-    <%= render 'layouts/header' %>
+    <header class= "shadow">
+      <%= render 'layouts/header' %>
+    </header>
+
   <% flash.each do |message_type, message| %>
     <% bs_class = case message_type.to_sym
         when :notice then "alert-success"
@@ -28,6 +31,8 @@
       <main class="mb-auto">
         <%= yield %>
       </main>
-    <%= render 'layouts/footer' %>
+    <footer class="bg-body-tertiary py-4 border-top border-info shadow-lg">
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

@@ -25,7 +25,9 @@
           <% end %>
           <%= simple_format(@post.body) %>
           <div class= "d-flex justify-content-around">
-            <p><i class="fa-solid fa-comment" style="color: #5ad3cb;"></i> <%= @post.post_comments.count %></p>
+            <div id= "comment-count">
+              <%= render 'public/post_comments/comment_count', post: @post %>
+            </div>
             <div id="favorite-btn-<%= @post.id %>">
               <%= render 'public/favorites/favorites.button', post: @post %>
             </div>

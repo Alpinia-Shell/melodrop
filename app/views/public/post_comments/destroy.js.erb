@@ -1,1 +1,2 @@
-$("#comments-list").html("<%= j render partial: 'public/post_comments/index', locals: { post: @post } %>");
+$("#comments-list").html("<%= j render 'public/post_comments/index', post: @post %>");
+$("#comment-count").html("<%= j render 'public/post_comments/comment_count', post: @post %>");

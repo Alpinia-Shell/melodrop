@@ -6,9 +6,11 @@
 
   <div class= "col-12 col-md-8" >
     <h3 class= "mt-4 text-center">
-      <span class= "border-bottom border-info">
-        <%= @user.name %>さんが見守るアメフラシ
-      </span>
+      <%= image_tag 'teru.jpg', style:"width:5%; height: 10%;" %>
+        <span class= "border-bottom border-info">
+          <%= @user.name %>さんが見守るアメフラシ
+        </span>
+      <%= image_tag 'teru.jpg', style:"width:5%; height: 10%;" %>
     </h3>
     <% if @users.present? %>
       <%= render 'public/relationships/follow.index', users: @users %>

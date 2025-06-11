@@ -7,7 +7,7 @@
   <div class="col-12 col-md-8 px-3 mt-5">
     <h3 class="text-center">
       <%= image_tag 'teru.jpg', style:"width:5%; height: 10%;" %>
-      <%= @partner.name %>さんとのお部屋
+      <%= link_to @partner.name, user_path(@partner), class: "text-decoration-none text-dark" %>さんとのお部屋
       <%= image_tag 'teru.jpg', style:"width:5%; height: 10%;" %>
     </h3>
 

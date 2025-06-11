@@ -6,7 +6,12 @@
   </div>
   <!-- メインコンテンツ（スクロール領域） -->
   <div class="col-12 col-md-8 p-0 content-area d-flex flex-column align-items-center">
-    <h3 class = "mt-3 fw-bold text-center">"<%= @content %>"の検索結果を表示しています。</h3>
+    <% if @posts.present? %>
+      <h3 class = "mt-3 fw-bold text-center">"<%= @content %>"の検索結果を表示しています。</h3>
+    <% else %>
+    <h3 class = "mt-3 fw-bold text-center">"<%= @content %>"が含まれる雫はありませんでした。</h3>
+    <% end %>
+    
     <div class="overflow-auto w-100 py-5">
       <% @posts.each do |post| %>
         <%= link_to post_path(post), style: "width: 100%;" ,class: "text-decoration-none d-block text-dark" do %>

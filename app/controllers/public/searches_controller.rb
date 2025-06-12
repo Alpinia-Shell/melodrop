@@ -3,6 +3,6 @@ class Public::SearchesController < ApplicationController
 
   def search
     @content = params[:content]
-    @posts = Post.where("title LIKE ? OR body LIKE ?", "%#{@content}%", "%#{@content}%").order(created_at: :desc)
+    @posts = Post.where("is_visible = ? AND (title LIKE ? OR body LIKE ?)", true, "%#{@content}%", "%#{@content}%").order(created_at: :desc)
   end
 end

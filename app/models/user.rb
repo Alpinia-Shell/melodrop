@@ -33,14 +33,11 @@ class User < ApplicationRecord
   GUEST_USER_EMAIL = "guest@example.com"
 
   def get_profile_image(width, height)
-    if profile_image.attached?
-      Rails.application.routes.url_helpers.rails_representation_url(
-        profile_image.variant(resize_to_fill: [width, height]).processed,
-        only_path: true
-      )
-    else
-      ActionController::Base.helpers.asset_path('no_image_square.jpg')
-    end
+    unless profile_image.attached?
+      file_path = Rails.root.join('app/assets/images/no_image_square.jpg')
+      profile_image.attach(io: File.open(file_path), filename: 'no_image_square.jpg', content_type: 'image/jpg')
+    end  
+    profile_image.variant(resize_to_fill: [width, height]).processed
   end
 
   def self.guest_sign_in

@@ -33,16 +33,20 @@ class User < ApplicationRecord
   GUEST_USER_EMAIL = "guest@example.com"
 
   def get_profile_image(width, height)
-    return ActionController::Base.helpers.asset_path('no_image_square.jpg') unless profile_image.attached?
+    if profile_image.attached?
+      profile_image.variant(resize_to_fill: [width, height]).processed
+    else
+      file_path = Rails.root.join('app/assets/images/no_image_square.jpg')
+      file = File.open(file_path)
   
-    begin
-      Rails.application.routes.url_helpers.rails_representation_url(
-        profile_image.variant(resize_to_fill: [width, height]).processed,
-        only_path: true
+      dummy_blob = ActiveStorage::Blob.create_and_upload!(
+        io: file,
+        filename: 'no_image_square.jpg',
+        content_type: 'image/jpeg'
       )
-    rescue => e
-      Rails.logger.error("Image processing error: #{e.message}")
-      ActionController::Base.helpers.asset_path('no_image_square.jpg')
+      file.close
+  
+      dummy_blob.variant(resize_to_fill: [width, height]).processed
     end
   end
 

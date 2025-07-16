@@ -32,25 +32,6 @@ class User < ApplicationRecord
 
   GUEST_USER_EMAIL = "guest@example.com"
 
-  def get_profile_image(width, height)
-    if profile_image.attached?
-      profile_image.variant(resize_to_fill: [width, height]).processed
-    else
-      file_path = Rails.root.join('public/images/no_image_square.jpg')
-      return unless File.exist?(file_path) # 念のためファイル存在確認
-  
-      file = File.open(file_path)
-      blob = ActiveStorage::Blob.create_and_upload!(
-        io: file,
-        filename: 'no_image_square.jpg',
-        content_type: 'image/jpeg'
-      )
-      file.close
-  
-      blob.variant(resize_to_fill: [width, height]).processed
-    end
-  end
-
   def self.guest_sign_in
     find_or_create_by!(email: GUEST_USER_EMAIL) do |user|
       user.password = SecureRandom.urlsafe_base64
@@ -61,4 +42,34 @@ class User < ApplicationRecord
   def guest?
     email == 'guest@example.com'
   end
+
+  def get_profile_image(width, height)
+    if profile_image.attached?
+      begin
+        profile_image.variant(resize_to_fill: [width, height]).processed
+      rescue => e
+        Rails.logger.error("Image processing failed: #{e.message}")
+        default_image_variant(width, height)
+      end
+    else
+      default_image_variant(width, height)
+    end
+  end
+  
+  private
+  
+  def default_image_variant(width, height)
+    file_path = Rails.root.join('public/images/no_image_square.jpg')
+    return unless File.exist?(file_path)
+  
+    file = File.open(file_path)
+    blob = ActiveStorage::Blob.create_and_upload!(
+      io: file,
+      filename: 'no_image_square.jpg',
+      content_type: 'image/jpeg'
+    )
+    file.close
+  
+    blob.variant(resize_to_fill: [width, height]).processed
+  end  
 end

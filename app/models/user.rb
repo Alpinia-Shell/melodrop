@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
   GUEST_USER_EMAIL = "guest@example.com"
 
-  def get_profile_image_url(width, height)
+  def get_profile_image(width, height)
     if profile_image.attached?
       Rails.application.routes.url_helpers.rails_representation_url(
         profile_image.variant(resize_to_fill: [width, height]).processed,
